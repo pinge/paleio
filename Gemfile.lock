@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/infbio/haml_assets.git
+  remote: git://github.com/infbio/haml_assets.git
   revision: de7aec4114427fdb385c01de85c8fcf89c8162f4
   specs:
     haml_assets (0.1.0)
