@@ -147,7 +147,7 @@ define([
             $(this.el).html(template).find('.channel_log').css({ 'display': 'none' });;
             $(this.el).find('.user_input').attr({ 'onpaste': "$(this).data('paste',true)" }); // patch for HAML bug
             $(window).resize(function(event){
-                $(thiz.el).find('.log_frame').animate({ scrollTop: $(thiz.el).find('.log_frame > table').height() - $(thiz.el).find('.log_frame').height() }, 'slow');
+                $(thiz.el).find('.log_frame').stop().animate({ scrollTop: $(thiz.el).find('.log_frame > table').height() - $(thiz.el).find('.log_frame').height() }, 'slow');
             });
             $('body > .navbar, body > .container .row-fluid').fadeIn('fast');
             return this;

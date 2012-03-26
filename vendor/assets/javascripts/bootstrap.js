@@ -19,7 +19,7 @@ require([
     "order!twitter/bootstrap-dropdown_2.0.1",
     "order!twitter/bootstrap-modal_2.0.1",
     "order!twitter/bootstrap-tab_2.0.1",
-    "order!twitter/bootstrap-tooltip_2.0.1",
+    "order!twitter/bootstrap-tooltip_2.0.2",
     "order!twitter/bootstrap-popover_2.0.1",
     "order!twitter/bootstrap-transition_2.0.1",
     "order!twitter/bootstrap-typeahead_2.0.1",

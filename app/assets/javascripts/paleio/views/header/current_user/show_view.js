@@ -44,8 +44,14 @@ define([
             var thiz = this;
             var signInFormAttributes = { user: { email: $(this.el).find('input.username').val(), password: $(this.el).find('input.password').val() } };
             App.user.id = null;
+            $(thiz.el).find('.sign_in').tooltip({ title: 'signing in..', trigger: 'manual', placement: 'bottom', delay: { hide: 5000 } });
+            var tooltip = $(thiz.el).find('.sign_in').data('tooltip');
+            tooltip.tip().find('.tooltip-inner').css({ 'color': 'white' });
+            $(thiz.el).find('.sign_in').tooltip('show');
             App.user.save(signInFormAttributes, {
                 success: function(model, response){
+                    tooltip.tip().find('.tooltip-inner').html('Hi '+ _.first(model.get('name').split(' ')));
+                    setTimeout(function(){ tooltip.hide(); }, 1500);
                     $('meta[name="csrf-token"]').attr({ content: response.token });
                     App.user.login();
                     if (Backbone.history.fragment == ""){
@@ -55,15 +61,13 @@ define([
     //                            App.router.navigate(Backbone.history.fragment, true);
                     }
                 },
-                error: function(xhr){
-                    $(thiz.el).find('form input').removeClass('error');
+                error: function(model, xhr){
                     if(_.include([400], xhr.status)){
-                        try{ var response = JSON.parse(xhr.responseText); } catch(e){ var response = {} }
-                        if (response.errors.global){ $(thiz.el).find('form input').addClass('error'); }
-                        _.each(response.errors.adhoc, function(error){
-                            var inputError = $(thiz.el).find('form input[name="'+_.first(_.keys(error))+'"]');
-                            inputError.addClass('error');
-                        });
+                        var response; try{ response = JSON.parse(xhr.responseText); } catch(e){ response = {} }
+                        if (response.errors.global && _.first(response.errors.global)) {
+                            tooltip.tip().find('.tooltip-inner').html(_.first(response.errors.global)).css({ 'color': '#c00' });
+                            setTimeout(function(){ tooltip.hide(); }, 1500);
+                        }
                     };
                 },
                 silent: true

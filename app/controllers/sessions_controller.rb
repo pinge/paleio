@@ -16,7 +16,7 @@ class SessionsController < Devise::SessionsController
   end
 
   def failure
-    render :json => { :errors => { :adhoc => {}, :global => ['login failed'] } }.to_json, :status => :bad_request
+    render :json => { :errors => { :adhoc => {}, :global => ['sign in failed'] } }.to_json, :status => :bad_request
   end
 
   def destroy

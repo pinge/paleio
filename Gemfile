@@ -16,7 +16,7 @@ gem 'requirejs-rails'
 gem 'thin'
 gem 'haml'
 gem 'ejs'
-gem 'haml_assets', :git => 'https://github.com/infbio/haml_assets.git'
+gem 'haml_assets', :git => 'git://github.com/infbio/haml_assets.git'
 gem 'multi_json', '1.0.4' # selenium webdriver dependency
 
 gem 'devise'
