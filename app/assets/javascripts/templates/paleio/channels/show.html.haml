@@ -2,6 +2,9 @@
   .span9.log_frame{ :style => 'overflow-y:auto;overflow-x:hidden;height:91%;margin:1% 0;border: 1px solid #ccc;border-radius:5px;padding:0.6%;'}
     %table{ :style => 'width:100%;' }
       %tbody.channel_log
+  .span2{ :style => 'margin:1% 0 1% 1%;border: 1px solid #ccc;border-radius:5px;padding:0.6%;' }
+    %h2
+      <%= model.get('name') %>
 
 .row-fluid.channel_input{ :style => 'height:30%;display:none;' }
   .span3{ :style => 'width:auto;height:50%;position:relative;' }

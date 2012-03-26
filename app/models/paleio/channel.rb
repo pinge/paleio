@@ -72,7 +72,7 @@ module Paleio
         script += "
             app.process('#{channel.code}_channel') do |process|
               process.start_command = '/usr/local/rvm/rubies/ruby-1.9.2-p290/bin/ruby #{Rails.root}/socket_server.rb #{channel.code} #{channel.current_port}'
-              process.pid_file = '/root/paleio/tmp/pids/paleio_channel_#{channel.code}_#{Time.zone.now.to_i}.pid'
+              process.pid_file = '#{Rails.root}/tmp/pids/paleio_channel_#{channel.code}_#{Time.zone.now.to_i}.pid'
               process.daemonize = true
             end"
       end
