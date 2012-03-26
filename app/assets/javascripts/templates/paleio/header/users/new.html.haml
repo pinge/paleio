@@ -1,0 +1,42 @@
+.modal-header
+  %a.cancel.close{ :href => '#' } ×
+  %h3 Create your Paleio account
+.modal-body
+  %form{ :method => :post }
+    %fieldset
+      %legend
+        yes, it's that simple :)
+      .row-fluid{ :style => 'padding-top:20px;' }
+        .span6
+          .control-group
+            %label.inline.control-label{ :for => 'user[name]' } Your name
+            %span.help-inline.as_error
+            .controls
+              %input.name{ :type => 'text', :name => 'user[name]' }
+        .span6
+          .control-group
+            %label.inline.control-label{ :for => 'user[email]' } Your e-mail
+            %span.help-inline.as_error
+            .controls
+              %input.email{ :type => 'text', :name => 'user[email]' }
+      .row-fluid
+        .span6
+          .control-group
+            %label.inline.control-label{ :for => 'password' } Your password
+            %span.help-inline.as_error
+            .controls
+              %input.password{ :type => 'password', :name => 'user[password]' }
+        .span6
+          .control-group
+            %label.inline.control-label{ :for => 'user[password_confirmation]' } and your password confirmation
+            %span.help-inline.as_error
+            .controls
+              %input.password_confirmation{ :type => 'password', :name => 'user[password_confirmation]' }
+
+.modal-footer{ :style => 'text-align:right;' }
+  .blocked{ :style => 'display:none;padding:4px 0px;' }
+    %span{ :style => 'margin-right:10px;'}
+      creating your account.. please wait..
+    %img{ :src => '/assets/load.gif' }
+  %a.btn.small.primary.submit_registration Create account
+  %a.btn.small.cancel.close{ :style => 'margin-top:0px;cursor:pointer;' } Cancel

@@ -1,0 +1,6 @@
+%td{ :style => 'vertical-align:top;width:35px;' }
+  <%= moment(model.get('timestamp')).format('HH:mm') %>
+%td{ :style => 'font-weight:bold;vertical-align:top;white-space:nowrap;' }
+  <%= model.get('nick') %>
+%td{ :style => 'vertical-align:top;padding-left:10px;width:100%;' }<
+  %i has entered the channel

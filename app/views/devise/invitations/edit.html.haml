@@ -1,0 +1,42 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      %a.brand{ :href => "#" } paleio
+      %ul.nav
+        %li
+          %a{ :style => 'cursor:none;' }
+            = "Invitation sent by #{resource.creator.name} <#{resource.creator.email}>"
+.container
+
+  .hero-unit
+    %h1
+      Welcome to Paleio.
+    %legend
+      You were invited by #{resource.creator.name}.
+      %br
+      Please set your password below to join.
+    = form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f|
+      %fieldset
+        = f.hidden_field :invitation_token
+        - password_errors = resource.errors.messages.detect{ |k,v| k == :password }
+        - if password_errors
+          .control-group.error
+            %label.inline.control-label Password
+            %span.help-inline.as_error
+              = password_errors.last.join(', ')
+            .controls
+              %input{ :type => 'password', :name => 'user[password]' }
+        - else
+          .control-group
+            %label.inline.control-label Password
+            %span.help-inline.as_error &nbsp;
+            .controls
+              %input{ :type => 'password', :name => 'user[password]' }
+        .control-group
+          %label.control-label Password confirmation
+          .controls
+            %input{ :type => 'password', :name => 'user[password_confirmation]' }
+        %input.btn{ :type => 'submit', :value => 'Save my password' }
+
+
+

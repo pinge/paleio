@@ -1,0 +1,28 @@
+.modal-header
+  %a.cancel.close{ :href => '#' } ×
+  %h3 Open a new channel
+.modal-body
+  %form
+    %fieldset
+      %legend please provide a unique code for you channel url
+      .row-fluid{ :style => 'padding-top:20px;' }
+        .span6
+          .control-group
+            %label.inline.control-label{ :for => 'user[name]' } Channel name
+            %span.help-inline.as_error
+            .controls
+              %input.channel_name.span2{ :type => 'text', :name => 'channel[name]' }
+        .span6
+          .control-group
+            %label.inline.control-label{ :for => 'user[email]' } Channel code
+            %span.help-inline.as_error
+            .controls
+              %input.channel_code.span2{ :type => 'text', :name => 'channel[code]' }
+
+.modal-footer{ :style => 'text-align:right;' }
+  .blocked{ :style => 'display:none;padding:4px 0px;' }
+    %span{ :style => 'margin-right:10px;'}
+      this might take a little.. please wait..
+    %img{ :src => '/assets/load.gif' }
+  %a.btn.small.primary.create_channel Create channel
+  %a.btn.small.cancel.close{ :style => 'margin-top:0px;cursor:pointer;' } Cancel

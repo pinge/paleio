@@ -1,0 +1,14 @@
+%td{ :style => 'vertical-align:top;width:35px;display:none;' }
+  <%= moment(model.get('timestamp')).format('HH:mm') %>
+%td{ :style => 'font-weight:bold;vertical-align:top;display:none;' }
+  <%= model.get('nick') %>
+%td.input{ :style => 'vertical-align:top;padding-left:10px;width:100%;display:none;' }<
+  <% if (model.get('is_code')) { %>
+  <% var prettyInput = model.get('input').replace(/  /g, '&nbsp;&nbsp;') %>
+  %pre{ :style => '' }<
+    %code{ :style => 'font-size:11px;border:1px solid #ddd;border-radius:3px;box-shadow: 0px 3px 4px #eee;' }<
+      <%= prettyInput %>
+  <% } else { %>
+  <% var prettyInput = model.get('input').split("\n").join("<br />") %>
+  <%= prettyInput %>
+  <% } %>

@@ -1,0 +1,10 @@
+.row-fluid{ :style => 'height:70%;display:none;' }
+  .span9.log_frame{ :style => 'overflow-y:auto;overflow-x:hidden;height:91%;margin:1% 0;border: 1px solid #ccc;border-radius:5px;padding:0.6%;'}
+    %table{ :style => 'width:100%;' }
+      %tbody.channel_log
+
+.row-fluid.channel_input{ :style => 'height:30%;display:none;' }
+  .span3{ :style => 'width:auto;height:50%;position:relative;' }
+    %textarea.span4.user_input{ :disabled => 'disabled', :style => 'border:1px solid #666;width:auto;margin:0;height:100%;', :rows => 4, :cols => 100 }
+  .span2
+    %button.btn.submit_input Send message

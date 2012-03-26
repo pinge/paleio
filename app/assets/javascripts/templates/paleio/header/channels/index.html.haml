@@ -1,0 +1,8 @@
+<% var channelCode = Backbone.history.fragment.replace('channels/',''); %>
+<% _.each(channels, function (channel) {  %>
+
+%li{ :class => 'channel_list_item <%= channelCode == channel.get("code") ? "active" : "" %>' }
+  %a{ :href => "#channels/<%= channel.get('code') %>" }
+    <%= channel.get('name') %>
+
+<% }) %>

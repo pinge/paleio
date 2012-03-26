@@ -1,0 +1,11 @@
+modules:
+  - name: "application"
+  - name: "bootstrap"
+  - name: "callup"
+    exclude: ["application"]
+paths:
+  jquery: "jquery"
+  underscore: "underscore"
+  backbone: "backbone"
+  bootstrap: "bootstrap"
+  templates: "templates/paleio"

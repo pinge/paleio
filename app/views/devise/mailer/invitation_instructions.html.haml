@@ -1,0 +1,17 @@
+%p
+  = "Hello #{@resource.name}!"
+
+%p
+  = "#{@resource.creator.name} has invited you to join him at Paleio."
+  %br
+  You can accept it through the link below. After opening the link, you'll have to setup your password.
+%br
+%p
+  %a{ :href => accept_invitation_url(@resource, :invitation_token => @resource.invitation_token), :target => '_blank' }
+    Accept invitation
+
+%br
+%p
+  If you don't want to accept the invitation, please ignore this email.
+%br
+%br
