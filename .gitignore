@@ -15,3 +15,4 @@
 /tmp
 .idea/**
 .rvmrc
+.nohup.out

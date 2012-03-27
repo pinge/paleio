@@ -87,9 +87,11 @@ module Paleio
       result = File.open("#{Rails.root}/lib/paleio/channel_scripts/channels.rb", 'w'){ |f| f.write(script) }
       if result > 0
         status = Open4::popen4("bash") do |pid, stdin, stdout, stderr|
-          stdin.puts "bluepill quit; pkill -9 -f socket_server.rb; sleep 5; bluepill load #{Rails.root}/lib/paleio/channel_scripts/channels.rb"
+          # in /etc/sudoers, nodoby should have an entry with NOPASSWD set for this to work under Apache Passenger
+          # in /etc/passwd, nobody's entry should have /bin/bash as shell (so rvm can be executed)
+          # (Apache User and Group were set to www-data) -> executing 'whoami' in a bash shell using popen4 returns 'nobody'
+          stdin.puts "rvmsudo bluepill quit; pkill -9 -f socket_server.rb; rvmsudo bluepill load #{Rails.root}/lib/paleio/channel_scripts/channels.rb"
           stdin.close
-
           puts "pid        : #{ pid }"
           puts "stdout     : #{ stdout.read.strip }"
           puts "stderr     : #{ stderr.read.strip }"
