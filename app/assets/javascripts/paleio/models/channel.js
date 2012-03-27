@@ -22,6 +22,8 @@ define([
         },
 
         disconnect: function(){
+            // failsafe. if at least onclose isn't set to null, the onclose function will trigger again
+            this.websocket.onclose = null; this.websocket.onopen = null; this.websocket.onmessage = null;
             // readyState = 0 => WebSocket is closed before the connection is established.
             if (!_.isNull(this.websocket) && this.websocket.readyState != 0){ this.websocket.close(); }
         }

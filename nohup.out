@@ -1,0 +1,480 @@
+[28118] 27 Mar 08:35:54 # Warning: no config file specified, using the default config. In order to specify a config file use 'redis-server /path/to/redis.conf'
+[28118] 27 Mar 08:35:54 * Server started, Redis version 2.4.8
+[28118] 27 Mar 08:35:54 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[28118] 27 Mar 08:35:54 * The server is now ready to accept connections on port 6379
+[28118] 27 Mar 08:35:54 - 0 clients connected (0 slaves), 717496 bytes in use
+[28118] 27 Mar 08:35:59 - 0 clients connected (0 slaves), 717496 bytes in use
+[28118] 27 Mar 08:36:04 - 0 clients connected (0 slaves), 717496 bytes in use
+[28118] 27 Mar 08:36:09 - 0 clients connected (0 slaves), 717496 bytes in use
+[28118] 27 Mar 08:36:14 - 0 clients connected (0 slaves), 717496 bytes in use
+[28118] 27 Mar 08:36:16 - Accepted 127.0.0.1:60049
+[28118] 27 Mar 08:36:20 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:36:25 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:36:30 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:36:35 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:36:40 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:36:45 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:36:50 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:36:56 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:37:01 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:37:06 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:37:11 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:37:16 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:37:21 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:37:26 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:37:32 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:37:37 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:37:42 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:37:47 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:37:52 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:37:57 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:38:02 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:38:07 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:38:13 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:38:18 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:38:23 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:38:28 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:38:33 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:38:37 - Accepted 127.0.0.1:47032
+[28118] 27 Mar 08:38:38 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:38:43 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:38:48 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:38:54 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:38:59 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:39:04 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:39:06 - Client closed connection
+[28118] 27 Mar 08:39:09 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:39:14 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:39:19 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:39:24 - Accepted 127.0.0.1:47033
+[28118] 27 Mar 08:39:24 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:39:29 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:39:35 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:39:40 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:39:45 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:39:50 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:39:55 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:40:00 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:40:05 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:40:10 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:40:15 - Client closed connection
+[28118] 27 Mar 08:40:16 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:40:21 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:40:23 - Accepted 127.0.0.1:47034
+[28118] 27 Mar 08:40:26 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:40:31 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:40:36 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:40:41 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:40:46 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:40:51 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:40:52 - Client closed connection
+[28118] 27 Mar 08:40:57 - 1 clients connected (0 slaves), 726424 bytes in use
+[28118] 27 Mar 08:40:58 - Accepted 127.0.0.1:47035
+[28118] 27 Mar 08:41:02 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:41:07 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:41:12 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:41:17 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:41:22 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:41:27 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:41:33 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:41:38 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:41:43 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:41:48 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:41:53 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:41:58 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:42:03 - 2 clients connected (0 slaves), 735352 bytes in use
+[28118] 27 Mar 08:42:04 - Accepted 127.0.0.1:47036
+[28118] 27 Mar 08:42:05 - Client closed connection
+[28118] 27 Mar 08:42:08 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:42:14 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:42:15 - Client closed connection
+[28118] 27 Mar 08:42:15 - Accepted 127.0.0.1:50542
+[28118] 27 Mar 08:42:19 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:42:24 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:42:29 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:42:34 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:42:39 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:42:44 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:42:50 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:42:55 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:43:00 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:43:05 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:43:10 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:43:15 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:43:20 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:43:25 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:43:31 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:43:36 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:43:41 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:43:46 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:43:51 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:43:56 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:44:01 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:44:07 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:44:12 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:44:17 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:44:22 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:44:27 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:44:32 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:44:37 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:44:43 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:44:48 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:44:53 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:44:58 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 08:45:02 - Client closed connection
+[28118] 27 Mar 08:45:02 - Accepted 127.0.0.1:50543
+[28118] 27 Mar 08:45:03 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:45:04 - Client closed connection
+[28118] 27 Mar 08:45:04 - Accepted 127.0.0.1:50544
+[28118] 27 Mar 08:45:08 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:45:13 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:45:18 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:45:24 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:45:29 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:45:34 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:45:39 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:45:44 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:45:49 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:45:54 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:46:00 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:46:05 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:46:10 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:46:15 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:46:20 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:46:24 - Client closed connection
+[28118] 27 Mar 08:46:25 - 1 clients connected (0 slaves), 726376 bytes in use
+[28118] 27 Mar 08:46:30 - 1 clients connected (0 slaves), 726376 bytes in use
+[28118] 27 Mar 08:46:35 - 1 clients connected (0 slaves), 726376 bytes in use
+[28118] 27 Mar 08:46:41 - 1 clients connected (0 slaves), 726376 bytes in use
+[28118] 27 Mar 08:46:46 - 1 clients connected (0 slaves), 726376 bytes in use
+[28118] 27 Mar 08:46:51 - 1 clients connected (0 slaves), 726376 bytes in use
+[28118] 27 Mar 08:46:56 - 1 clients connected (0 slaves), 726376 bytes in use
+[28118] 27 Mar 08:47:01 - 1 clients connected (0 slaves), 726376 bytes in use
+[28118] 27 Mar 08:47:06 - 1 clients connected (0 slaves), 726376 bytes in use
+[28118] 27 Mar 08:47:11 - 1 clients connected (0 slaves), 726376 bytes in use
+[28118] 27 Mar 08:47:12 - Accepted 127.0.0.1:50549
+[28118] 27 Mar 08:47:16 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:47:18 - Accepted 127.0.0.1:52080
+[28118] 27 Mar 08:47:22 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 08:47:27 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 08:47:32 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 08:47:37 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 08:47:42 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 08:47:47 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 08:47:52 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 08:47:58 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 08:48:03 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 08:48:08 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 08:48:13 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 08:48:18 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 08:48:19 - Client closed connection
+[28118] 27 Mar 08:48:23 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:48:25 - Accepted 127.0.0.1:52081
+[28118] 27 Mar 08:48:28 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 08:48:29 - Client closed connection
+[28118] 27 Mar 08:48:30 - Accepted 127.0.0.1:52082
+[28118] 27 Mar 08:48:32 - Client closed connection
+[28118] 27 Mar 08:48:32 - Accepted 127.0.0.1:52083
+[28118] 27 Mar 08:48:33 - Client closed connection
+[28118] 27 Mar 08:48:33 - Accepted 127.0.0.1:52084
+[28118] 27 Mar 08:48:33 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 08:48:39 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 08:48:44 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 08:48:48 - Client closed connection
+[28118] 27 Mar 08:48:49 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:48:54 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:48:59 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:49:04 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:49:09 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:49:14 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:49:20 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:49:25 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:49:30 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:49:35 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:49:40 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:49:45 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:49:50 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:49:55 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:50:01 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:50:06 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:50:11 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:50:16 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:50:21 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:50:26 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:50:31 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:50:37 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:50:42 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:50:47 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:50:52 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:50:57 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:51:02 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:51:07 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:51:12 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:51:18 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:51:23 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:51:28 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:51:33 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:51:38 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:51:43 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:51:48 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:51:53 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:51:59 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:52:04 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:52:09 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:52:14 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:52:19 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:52:24 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:52:30 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:52:35 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:52:40 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:52:45 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:52:50 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:52:55 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:53:00 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:53:05 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:53:11 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:53:16 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:53:21 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:53:26 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:53:31 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:53:36 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:53:41 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:53:46 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:53:52 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:53:57 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:54:02 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:54:07 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:54:12 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:54:17 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:54:22 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:54:28 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:54:33 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:54:38 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:54:43 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:54:48 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:54:53 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:54:58 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:55:04 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:55:09 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:55:14 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:55:19 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:55:24 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:55:29 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:55:34 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:55:39 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:55:45 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:55:50 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:55:55 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:56:00 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:56:05 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:56:10 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:56:15 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:56:21 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:56:26 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:56:31 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:56:36 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:56:41 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:56:46 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:56:51 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:56:57 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:57:02 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:57:07 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:57:12 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:57:17 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:57:22 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:57:27 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:57:33 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:57:38 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:57:43 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:57:48 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:57:53 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:57:58 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:58:03 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:58:09 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:58:14 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:58:19 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:58:24 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:58:29 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:58:34 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:58:39 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:58:44 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:58:50 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:58:55 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:59:00 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:59:05 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:59:10 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:59:15 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:59:20 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:59:26 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:59:31 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:59:36 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:59:41 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:59:46 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:59:51 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 08:59:56 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:00:02 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:00:07 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:00:12 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:00:17 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:00:22 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:00:27 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:00:32 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:00:37 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:00:43 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:00:48 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:00:53 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:00:58 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:01:03 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:01:08 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:01:13 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:01:18 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:01:24 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:01:29 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:01:34 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:01:39 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:01:44 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:01:49 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:01:54 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:02:00 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:02:05 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:02:10 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:02:15 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:02:20 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:02:25 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:02:30 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:02:36 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:02:41 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:02:46 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:02:51 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:02:56 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:03:01 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:03:07 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:03:12 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:03:17 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:03:22 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:03:27 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:03:32 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:03:37 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:03:43 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:03:48 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:03:53 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:03:58 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:04:03 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:04:08 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:04:13 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:04:18 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:04:24 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:04:29 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:04:34 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:04:39 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:04:44 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:04:49 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:04:51 - Reading from client: Connection reset by peer
+[28118] 27 Mar 09:04:51 - Accepted 127.0.0.1:59837
+[28118] 27 Mar 09:04:54 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:04:54 - Reading from client: Connection reset by peer
+[28118] 27 Mar 09:05:00 - 1 clients connected (0 slaves), 726392 bytes in use
+[28118] 27 Mar 09:05:05 - 1 clients connected (0 slaves), 726392 bytes in use
+[28118] 27 Mar 09:05:10 - 1 clients connected (0 slaves), 726392 bytes in use
+[28118] 27 Mar 09:05:15 - 1 clients connected (0 slaves), 726392 bytes in use
+[28118] 27 Mar 09:05:20 - 1 clients connected (0 slaves), 726392 bytes in use
+[28118] 27 Mar 09:05:25 - 1 clients connected (0 slaves), 726392 bytes in use
+[28118] 27 Mar 09:05:30 - 1 clients connected (0 slaves), 726392 bytes in use
+[28118] 27 Mar 09:05:32 - Accepted 127.0.0.1:59838
+[28118] 27 Mar 09:05:35 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:05:41 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:05:46 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:05:51 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:05:56 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:06:01 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:06:06 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:06:11 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:06:16 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:06:22 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:06:27 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:06:32 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:06:37 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:06:42 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:06:47 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:06:52 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:06:58 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:07:03 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:07:08 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:07:13 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:07:18 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:07:23 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:07:28 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:07:33 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:07:37 - Accepted 127.0.0.1:57682
+[28118] 27 Mar 09:07:38 - Client closed connection
+[28118] 27 Mar 09:07:38 - Client closed connection
+[28118] 27 Mar 09:07:38 - 1 clients connected (0 slaves), 726376 bytes in use
+[28118] 27 Mar 09:07:44 - 1 clients connected (0 slaves), 726376 bytes in use
+[28118] 27 Mar 09:07:46 - Accepted 127.0.0.1:57683
+[28118] 27 Mar 09:07:49 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:07:50 - Accepted 127.0.0.1:57684
+[28118] 27 Mar 09:07:51 - Client closed connection
+[28118] 27 Mar 09:07:51 - Accepted 127.0.0.1:57685
+[28118] 27 Mar 09:07:51 - Client closed connection
+[28118] 27 Mar 09:07:52 - Accepted 127.0.0.1:57686
+[28118] 27 Mar 09:07:54 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 09:07:59 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 09:08:04 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 09:08:09 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 09:08:14 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 09:08:20 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 09:08:23 - Client closed connection
+[28118] 27 Mar 09:08:25 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:08:30 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:08:33 - Accepted 127.0.0.1:57687
+[28118] 27 Mar 09:08:34 - Client closed connection
+[28118] 27 Mar 09:08:34 - Accepted 127.0.0.1:57688
+[28118] 27 Mar 09:08:35 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 09:08:40 - 3 clients connected (0 slaves), 744104 bytes in use
+[28118] 27 Mar 09:08:42 - Client closed connection
+[28118] 27 Mar 09:08:45 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:08:50 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:08:54 - Accepted 127.0.0.1:57689
+[28118] 27 Mar 09:08:55 - 3 clients connected (0 slaves), 744168 bytes in use
+[28118] 27 Mar 09:09:01 - 3 clients connected (0 slaves), 744168 bytes in use
+[28118] 27 Mar 09:09:05 - Client closed connection
+[28118] 27 Mar 09:09:06 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:09:11 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:09:16 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:09:21 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:09:26 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:09:31 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:09:36 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:09:42 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:09:47 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:09:52 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:09:57 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:10:02 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:10:07 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:10:12 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:10:17 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:10:22 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:10:28 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:10:33 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:10:38 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:10:43 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:10:48 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:10:53 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:10:55 - Reading from client: Connection reset by peer
+[28118] 27 Mar 09:10:55 - Accepted 127.0.0.1:57690
+[28118] 27 Mar 09:10:58 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:11:03 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:11:09 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:11:14 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:11:19 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:11:24 - 2 clients connected (0 slaves), 735304 bytes in use
+[28118] 27 Mar 09:11:28 - Accepted 127.0.0.1:57691
+[28118] 27 Mar 09:11:29 - 3 clients connected (0 slaves), 744168 bytes in use
+[28118] 27 Mar 09:11:30 - Client closed connection
+[28118] 27 Mar 09:11:30 - Accepted 127.0.0.1:57692
+[28118] 27 Mar 09:11:30 - Client closed connection
+[28118] 27 Mar 09:11:34 - 2 clients connected (0 slaves), 735240 bytes in use
+[28118] 27 Mar 09:11:38 - Reading from client: Connection reset by peer
+[28118] 27 Mar 09:11:39 - 1 clients connected (0 slaves), 726392 bytes in use
+[28118] 27 Mar 09:11:45 - 1 clients connected (0 slaves), 726392 bytes in use
+[28118] 27 Mar 09:11:50 - 1 clients connected (0 slaves), 726392 bytes in use

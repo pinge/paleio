@@ -5,6 +5,7 @@ define([
     "order!paleio/models/channels/entries/text",
     "order!paleio/models/channels/entries/code",
     "order!paleio/models/channels/entries/join",
+    "order!paleio/models/channels/inputs/join",
     "order!paleio/collections/inputs",
     "order!paleio/collections/channels/entries",
     "order!paleio/views/channels/entries/show_view",
@@ -13,7 +14,7 @@ define([
     "order!paleio/views/channels/entries/join/show_view",
     "text!templates/channels/show.html"
 
-], function(jquery, underscore, backbone, Entry, TextEntry, CodeEntry, JoinEntry, Inputs, ChannelEntries,
+], function(jquery, underscore, backbone, Entry, TextEntry, CodeEntry, JoinEntry, JoinInput, Inputs, ChannelEntries,
             ChannelEntryView, TextEntryView, CodeEntryView, JoinEntryView, channelTemplate) {
 
     return Backbone.View.extend({
@@ -43,7 +44,10 @@ define([
             var thiz = this;
             _.each(inputs.models, function(input){
                 var entry;
-                if (input.get('is_code')) {
+                if (input.get('is_join')) {
+                    var entryAttributes = { nick: input.get('nick'), timestamp: input.get('timestamp') };
+                    entry = new JoinEntry(entryAttributes);
+                } else if (input.get('is_code')) {
                     var entryAttributes = { nick: input.get('nick'), code: input.get('input'), language: input.get('code_language'), timestamp: input.get('timestamp') };
                     entry = new CodeEntry(entryAttributes);
                 } else {
@@ -58,11 +62,13 @@ define([
         },
 
         createEntryView: function(entry){
-            if (entry instanceof CodeEntry){
+            if (entry instanceof JoinEntry) {
+                return new JoinEntryView({ model: entry });
+            } else if (entry instanceof CodeEntry) {
                 return new CodeEntryView({ model: entry });
-            } else if (entry instanceof TextEntry){
+            } else if (entry instanceof TextEntry) {
                 return new TextEntryView({ model: entry });
-            } else if (entry instanceof JoinEntry){
+            } else if (entry instanceof JoinEntry) {
                 return new JoinEntryView({ model: entry });
             } else {
                 return new ChannelEntryView({ model: entry });
@@ -97,31 +103,47 @@ define([
             thiz.model.connect({
                 onmessage: function (event) {
                     var data; try{ data = JSON.parse(event.data); } catch(e){ data = {}; }
-                    switch (data.type){
-                        case 'input':
-                            if (data.input.is_code){
-                                var entryAttributes = { nick: data.input.nick, timestamp: data.input.timestamp, code: data.input.input, language: data.input.code_language }
-                                var entry = new CodeEntry(entryAttributes); thiz.entries.add(entry);
-                            } else {
-                                var entryAttributes = { nick: data.input.nick, timestamp: data.input.timestamp, text: data.input.input }
-                                var entry = new TextEntry(entryAttributes); thiz.entries.add(entry);
-                            }
+                    switch (data.type) {
+                        case 'code':
+                            var entryAttributes = { nick: data.code.nick, timestamp: data.code.timestamp, code: data.code.code, language: data.code.language }
+                            var entry = new CodeEntry(entryAttributes); thiz.entries.add(entry);
+                            break;
+                        case 'text':
+                            var entryAttributes = { nick: data.text.nick, timestamp: data.text.timestamp, text: data.text.text }
+                            var entry = new TextEntry(entryAttributes); thiz.entries.add(entry);
                             break;
                         case 'join':
                             var entryAttributes = { nick: data.join.nick, timestamp: data.join.timestamp }
                             var entry = new JoinEntry(entryAttributes); thiz.entries.add(entry);
                             break;
+                        case 'current_users':
+                            $(thiz.el).find('.connected_users').empty();
+                            // TODO current users views.. this works for now
+                            _.each(data.users, function (connectedUser) {
+                                var cu = $('<tr>');
+                                cu.append($('<td>').html(connectedUser.nick));
+                                $(thiz.el).find('.connected_users').append(cu);
+                            });
+                            break;
                     }
                 },
                 onclose: function () {
                     $(thiz.el).find('textarea').attr('disabled','disabled').attr('placeholder', thiz.defaults.inputPlaceholderDisabled);
+                    $(thiz.el).find('.connected_users tr td').css({ 'color': '#ccc' });
                     clearTimeout(thiz.refresh);
                     setTimeout(function() { thiz.startWebSocketClient(); }.apply(thiz), 5000);
                 },
                 onopen: function() {
+                    var that = this;
+                    $(thiz.el).find('.connected_users > tr > td').css({ 'color': '#333' });
                     $(thiz.el).find('textarea').removeAttr('disabled').attr('placeholder', thiz.defaults.inputPlaceholderEnabled).focus();
-                    var join = { 'timestamp': moment().valueOf(),'nick': App.user.nick() };
-                    this.send(JSON.stringify({ type: "join", join:join }));
+                    var joinInput = new JoinInput({ type: 'join' });
+                    joinInput.url = '/channels/'+ thiz.model.id +'/inputs.json';
+                    joinInput.save({},{
+                        success: function (model, response) {
+                            that.send(JSON.stringify({ 'type': 'ping', 'email': App.user.get('email'), 'nick': App.user.nick() }));
+                        }
+                    });
                 }
             });
         },
@@ -166,7 +188,7 @@ define([
                 $.ajax({
                     url: '/channels/'+this.model.id+'/inputs.json',
                     type: 'POST', dataType: 'json', contentType: 'application/json',
-                    data: JSON.stringify({ input: { raw: input, nick: App.user.nick(), code_language: codeLanguage, paste: paste } }),
+                    data: JSON.stringify({ input: { 'type': _.isNull(codeLanguage) ? 'text' : 'code', 'raw': input, 'nick': App.user.nick(), 'code_language': codeLanguage, 'paste': paste } }),
                     error: function(xhr){
                         $(this.el).find('.user_input').val(input);
                     },

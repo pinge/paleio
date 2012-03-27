@@ -14,19 +14,24 @@ module Paleio
     end
 
     def add_entry(raw_entry)
-      if raw_entry.is_a?(Paleio::Input)
-        if raw_entry.is_code?
-          Paleio::Entry::Code.create!({
-                                          :journal_id => self.id, :nickname => raw_entry.nick, :text => raw_entry.raw, :paste => raw_entry.paste,
-                                          :code_language => raw_entry.code_language, :created_by => raw_entry.created_by
+      if raw_entry.is_a?(Paleio::Input::Join)
+          Paleio::Entry::Join.create!({
+                                          :journal_id => self.id, :nickname => raw_entry.nick, :created_by => raw_entry.created_by
                                       })
-        else
-          Paleio::Entry::Text.create!({
-                                          :journal_id => self.id, :nickname => raw_entry.nick, :text => raw_entry.raw, :paste => raw_entry.paste,
-                                          :created_by => raw_entry.created_by
-                                      })
-        end
       end
+      #if raw_entry.is_a?(Paleio::Input::Base)
+      #  if raw_entry.is_code?
+      #    Paleio::Entry::Code.create!({
+      #                                    :journal_id => self.id, :nickname => raw_entry.nick, :text => raw_entry.raw, :paste => raw_entry.paste,
+      #                                    :code_language => raw_entry.code_language, :created_by => raw_entry.created_by
+      #                                })
+      #  else
+      #    Paleio::Entry::Text.create!({
+      #                                    :journal_id => self.id, :nickname => raw_entry.nick, :text => raw_entry.raw, :paste => raw_entry.paste,
+      #                                    :created_by => raw_entry.created_by
+      #                                })
+      #  end
+      #end
     end
 
     #def as_json(options = {})

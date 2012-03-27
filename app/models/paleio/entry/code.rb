@@ -4,7 +4,8 @@ module Paleio
 
     class Code < Paleio::Entry::Base
 
-      validates_presence_of :code_language
+      validates_presence_of :code_language, :text
+      validates_inclusion_of :paste, :in => [true,false]
 
       private
 

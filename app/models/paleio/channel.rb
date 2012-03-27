@@ -5,7 +5,8 @@ module Paleio
     PORT_RANGE = [3000,5000] # _maximum_ number of websocket servers in this host
 
     set_table_name 'channels'
-    has_many :inputs,         :class_name => 'Paleio::Input',           :foreign_key => 'channel_id'
+    has_many :inputs,         :class_name => 'Paleio::Input::Base',           :foreign_key => 'channel_id'
+    has_many :join_inputs,    :class_name => 'Paleio::Input::Join',           :foreign_key => 'channel_id'
     has_many :journals,       :class_name => 'Paleio::Journal',         :foreign_key => 'channel_id'
     validates_presence_of :name, :code, :account_id, :current_host, :current_port
     validates_uniqueness_of :current_port
@@ -23,6 +24,10 @@ module Paleio
     def journal_for(y,m,d)
       existing_journal = self.journals.where('year = ? AND month = ? AND day = ?', y, m, d).first
       existing_journal ||= self.journals.create!({ :account_id => self.account_id, :year => y, :month => m, :day => d })
+    end
+
+    def last_activity_by(user)
+      (self.inputs.where("created_by = ?", user).order('created_at DESC').first.created_at rescue nil)
     end
 
     # TODO not working _at least_ when running rake db:migrate

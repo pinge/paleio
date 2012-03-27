@@ -47,6 +47,7 @@ else
 end
 
 SOCKETS = []
+CURRENT_USERS = {}
 
 puts "paleio: connecting to redis"
 @redis = Redis.new(:host => '127.0.0.1', :port => 6379)
@@ -62,22 +63,72 @@ Thread.new do
   EventMachine.run do
     # Creates a websocket listener
     EventMachine::WebSocket.start(:host => websocket_server_host, :port => port) do |ws|
-      ws.onopen do # client joins
-        puts 'creating socket'
-        #ws.send({ :type => 'join' }.to_json);
-        SOCKETS << ws # When someone connects I want to add that socket to the SOCKETS array that I instantiated above
+
+      def broadcast_current_users
+        current_users_message = { :type => 'current_users', :users => [] }
+        CURRENT_USERS.sort{ |a,b| a.last[:nick] <=> b.last[:nick] }.each do |email,user|
+          current_users_message[:users] << { :email => email, :nick => user[:nick] }
+        end
+        SOCKETS.each{ |socket| socket.send(current_users_message.to_json) }
       end
+
+      ws.onopen do # client joins
+        p "paleio onopen: #{ws.object_id}"
+        SOCKETS << ws # When someone connects I want to add that socket to the SOCKETS array that I instantiated above
+        #broadcast_current_users
+      end
+
       ws.onclose do
-        puts 'closing socket'
+        existing_user = CURRENT_USERS.detect{ |email,user| user[:socket_object_ids].detect{ |sid| sid == ws.object_id } }
+        if existing_user
+          existing_user.last[:socket_object_ids].delete(ws.object_id)
+          if existing_user.last[:socket_object_ids].empty?
+            CURRENT_USERS.delete existing_user.first
+            broadcast_current_users
+          end
+        else
+        end
         SOCKETS.delete ws # Upon the close of the connection I remove it from my list of running sockets
       end
+
       ws.onerror do |error|
+        # TODO handle on error
+        # TODO handle accented characters
+        # <EventMachine::WebSocket::WebSocketError: Data sent to WebSocket must be valid UTF-8 but was ASCII-8BIT (valid: true)>
         ap error
       end
+
       ws.onmessage do |msg|
-        ap msg
-        SOCKETS.each {|s| s.send msg}
+        message = JSON.parse(msg)
+        p "paleio onmessage: #{msg}"
+        if ['ping'].include?(message['type'])
+          nick = message['nick']
+          email = message['email']
+          if CURRENT_USERS.include?(email)
+            CURRENT_USERS[email][:socket_object_ids] << ws.object_id
+            CURRENT_USERS[email][:last_activity] = Time.now.to_i
+          else
+            CURRENT_USERS[email] = { :socket_object_ids => [ws.object_id], :nick => nick, :last_activity => Time.now.to_i }
+          end
+          broadcast_current_users
+        elsif ['join'].include?(message['type'])
+          if message['join'].include?('email') and message['join']['email'] != ''
+            nick = message['join']['nick']
+            email = message['join']['email']
+            if CURRENT_USERS.include?(email)
+              CURRENT_USERS[email][:socket_object_ids] << ws.object_id
+              CURRENT_USERS[email][:last_activity] = Time.now.to_i
+            else
+              CURRENT_USERS[email] = { :socket_object_ids => [ws.object_id], :nick => nick, :last_activity => Time.now.to_i }
+              broadcast_current_users
+            end
+          else
+          end
+        else
+          SOCKETS.each {|s| s.send msg}
+        end
       end
+
     end
   end
 end
@@ -86,8 +137,8 @@ end
 Thread.new do
   @redis.subscribe("channel_#{channel_code}") do |on|
     on.message do |chan, msg| # When a message is published to 'channel_code'
-     puts "sending message: #{msg}"
-     SOCKETS.each {|s| s.send msg} # Send out the message on each open socket
+      puts "sending message: #{msg}"
+      SOCKETS.each {|s| s.send msg} # Send out the message on each open socket
     end
   end
 end

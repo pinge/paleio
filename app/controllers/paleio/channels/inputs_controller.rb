@@ -19,7 +19,17 @@ module Paleio
       def create
         respond_to do |format|
           format.json{
-            @channel.inputs.create!(params[:input].merge!({ :created_by => current_user.id }))
+            input_type = params[:input].delete(:type)
+            common_params = { :channel_id => @channel.id, :created_by => current_user.id, :nick => current_user.name }
+            last_activity = @channel.last_activity_by(current_user)
+            case input_type
+              when 'join' then
+                Paleio::Input::Join.create!(params[:input].merge!(common_params)) if last_activity.nil? or last_activity < Time.zone.now.advance(:minutes => -30)
+              when 'text' then
+                Paleio::Input::Text.create!(params[:input].merge!(common_params))
+              when 'code' then
+                Paleio::Input::Code.create!(params[:input].merge!(common_params))
+            end
             render :json => {}.to_json, :status => :created
           }
         end

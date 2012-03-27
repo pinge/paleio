@@ -51,9 +51,12 @@ ActiveRecord::Schema.define(:version => 20120325145940) do
   end
 
   create_table "inputs", :force => true do |t|
-    t.text     "raw"
-    t.string   "nick"
+    t.string   "type"
     t.integer  "channel_id"
+    t.string   "nick"
+    t.text     "raw"
+    t.boolean  "join"
+    t.boolean  "leave"
     t.boolean  "paste"
     t.string   "code_language"
     t.integer  "created_by"

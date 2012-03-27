@@ -1,6 +1,6 @@
 %td{ :style => 'vertical-align:top;width:35px;display:none;' }
   <%= moment(model.get('timestamp')).format('HH:mm') %>
-%td{ :style => 'font-weight:bold;vertical-align:top;display:none;' }
+%td{ :style => 'font-weight:bold;vertical-align:top;display:none;text-align:right;' }
   <%= model.get('nick') %>
 %td.input{ :style => 'vertical-align:top;padding-left:10px;width:100%;display:none;' }<
   <% if (model.get('is_code')) { %>

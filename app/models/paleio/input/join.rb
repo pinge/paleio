@@ -1,13 +1,8 @@
 module Paleio
 
-  module Entry
+  module Input
 
-    class Base < ActiveRecord::Base
-
-      set_table_name 'entries'
-
-      belongs_to :journal,          :class_name => 'Paleio::Journal',         :foreign_key => 'journal_id'
-      validates_presence_of :journal_id, :nickname, :created_by
+    class Join < Paleio::Input::Base
 
       #def as_json(options = {})
       #  {
@@ -17,6 +12,13 @@ module Paleio
       #end
 
       private
+      def broadcast
+        Rails.logger.info "channel_#{self.channel.code}"
+        @@redis.publish("channel_#{self.channel.code}", { :type => 'join', :join => {
+            :nick => self.nick, :timestamp => self.created_at.to_i * 1000
+        } }.to_json)
+        true
+      end
 
     end
 

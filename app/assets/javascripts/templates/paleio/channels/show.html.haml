@@ -5,6 +5,12 @@
   .span2{ :style => 'margin:1% 0 1% 1%;border: 1px solid #ccc;border-radius:5px;padding:0.6%;' }
     %h2
       <%= model.get('name') %>
+    %h5
+      who's connected
+    %table.table.table-condensed
+      %tbody.connected_users
+
+
 
 .row-fluid{ :style => 'padding: 0 0 0 0.6%;font-size: 13px;min-height:20px;height:2.5%;clear:both;' }
   %span.user_clock{ :style => '' }
