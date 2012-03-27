@@ -6,13 +6,13 @@
     %h2
       <%= model.get('name') %>
 
-.row-fluid{ :style => 'padding: 0 0 5px 0.6%;font-size: 13px;' }
+.row-fluid{ :style => 'padding: 0 0 0 0.6%;font-size: 13px;min-height:20px;height:2.5%;clear:both;' }
   %span.user_clock{ :style => '' }
     <%= moment().format('HH:mm') %>
   %span{ :style => 'font-weight: bold;' }
     <%= App.user.nick() %>
-.row-fluid.channel_input{ :style => 'height:30%;display:none;' }
-  .span3{ :style => 'width:auto;height:50%;position:relative;' }
+.row-fluid.channel_input{ :style => 'height:25%;display:none;clear:both;' }
+  .span5{ :style => 'height:60%;position:relative;' }
     %textarea.span4.user_input{ :disabled => 'disabled', :style => 'border:1px solid #666;width:auto;margin:0;height:100%;', :rows => 4, :cols => 100 }
   .span2
     %button.btn.submit_input Send message
