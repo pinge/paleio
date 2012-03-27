@@ -21,10 +21,15 @@ define([
 
         },
 
+        clearView: function () {
+            if (!_.isNull(this.view)) { this.view.remove(); $('body > .navbar').after($('<div>').addClass('container')); }
+        },
+
         index: function( actions ){
-            var view = new HomeView();
-            $(AppView.el).children('.container').html(view.el);
-            view.render();
+            this.clearView();
+            this.view = new HomeView();
+            $(AppView.el).children('.container').html(this.view.el);
+            this.view.render();
         },
 
         enterChannel: function (channelCode) {
@@ -32,10 +37,7 @@ define([
             var thiz = this;
             App.user.channels.fetch({
                 success: function(collection, response){
-                    if (!_.isNull(thiz.view)){
-                        thiz.view.remove();
-                        $('body > .navbar').after($('<div>').addClass('container'));
-                    }
+                    thiz.clearView();
                     var channel = _.detect(collection.models, function(m){ return m.get('code') == channelCode; });
                     thiz.view = new ShowChannelView({ model: channel });
                 }
@@ -44,10 +46,10 @@ define([
 
         showSettings: function () {
             if (!App.user.loggedIn){ Backbone.history.navigate("", true); return false; }
-            if (!_.isNull(this.view)){ this.view.remove(); $('body > .navbar').after($('<div>').addClass('container')); }
-            var view = new SettingsView();
-            $('body > .container').html(view.el);
-            view.render();
+            this.clearView();
+            this.view = new SettingsView();
+            $('body > .container').html(this.view.el);
+            this.view.render();
         }
 
     });

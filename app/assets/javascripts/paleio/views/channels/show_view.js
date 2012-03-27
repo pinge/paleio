@@ -22,6 +22,7 @@ define([
 
         entries: null, // entries are the channel log
         inputs: null, // inputs are the users inputs from the past
+        clockIntervalId: null,
         inputViews: {},
 
         defaults: {
@@ -150,6 +151,7 @@ define([
                 $(thiz.el).find('.log_frame').stop().animate({ scrollTop: $(thiz.el).find('.log_frame > table').height() - $(thiz.el).find('.log_frame').height() }, 'slow');
             });
             $('body > .navbar, body > .container .row-fluid').fadeIn('fast');
+            this.clockIntervalId = setInterval(function () { $(thiz.el).find('.user_clock').html(moment().format('HH:mm')); }, 5000);
             return this;
         },
 
@@ -176,6 +178,7 @@ define([
         },
 
         remove: function(){
+            clearInterval(this.clockIntervalId);
             this.model.disconnect();
             Backbone.View.prototype.remove.call(this);
         }

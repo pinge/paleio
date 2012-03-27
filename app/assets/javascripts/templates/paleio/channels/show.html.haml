@@ -6,8 +6,11 @@
     %h2
       <%= model.get('name') %>
 
-.row-fluid{ :style => 'font-weight: bold;font-size: 13px;padding: 0 0 5px 0.6%;' }
-  <%= App.user.nick() %>
+.row-fluid{ :style => 'padding: 0 0 5px 0.6%;font-size: 13px;' }
+  %span.user_clock{ :style => '' }
+    <%= moment().format('HH:mm') %>
+  %span{ :style => 'font-weight: bold;' }
+    <%= App.user.nick() %>
 .row-fluid.channel_input{ :style => 'height:30%;display:none;' }
   .span3{ :style => 'width:auto;height:50%;position:relative;' }
     %textarea.span4.user_input{ :disabled => 'disabled', :style => 'border:1px solid #666;width:auto;margin:0;height:100%;', :rows => 4, :cols => 100 }
