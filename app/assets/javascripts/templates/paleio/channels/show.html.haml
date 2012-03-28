@@ -1,8 +1,9 @@
-.row-fluid{ :style => 'height:70%;display:none;' }
-  .span9.log_frame{ :style => 'overflow-y:auto;overflow-x:hidden;height:91%;margin:1% 0;border: 1px solid #ccc;border-radius:5px;padding:0.6%;'}
+.row-fluid{ :style => 'position:fixed;top:50px;bottom:135px;display:none;padding:0;' }
+  -#.span9.log_frame{ :style => 'overflow-y:auto;overflow-x:hidden;height:91%;margin:1% 0;border: 1px solid #ccc;border-radius:5px;padding:0.6%;'}
+  .span8.log_frame{ :style => 'overflow-y:auto;overflow-x:hidden;padding:4px 4px 0px 4px;height:100%;border: 1px solid #ccc;border-radius:5px;'}
     %table{ :style => 'width:100%;' }
       %tbody.channel_log
-  .span2{ :style => 'margin:1% 0 1% 1%;border: 1px solid #ccc;border-radius:5px;padding:0.6%;' }
+  .span3{ :style => 'margin:0 0 0 10px;border: 1px solid #ccc;border-radius:5px;padding:10px;' }
     %h2
       <%= model.get('name') %>
     %h5
@@ -10,15 +11,30 @@
     %table.table.table-condensed
       %tbody.connected_users
 
+-#.row-fluid{ :style => 'padding: 0 0 0 0.6%;font-size: 13px;min-height:20px;height:2.5%;clear:both;' }
 
+.row-fluid.channel_input{ :style => 'height:120px;display:none;clear:both;position:fixed;bottom:0px;height:120px;' }
 
-.row-fluid{ :style => 'padding: 0 0 0 0.6%;font-size: 13px;min-height:20px;height:2.5%;clear:both;' }
-  %span.user_clock{ :style => '' }
-    <%= moment().format('HH:mm') %>
-  %span{ :style => 'font-weight: bold;' }
-    <%= App.user.nick() %>
-.row-fluid.channel_input{ :style => 'height:25%;display:none;clear:both;' }
-  .span5{ :style => 'height:60%;position:relative;' }
-    %textarea.span4.user_input{ :disabled => 'disabled', :style => 'border:1px solid #666;width:auto;margin:0;height:100%;', :rows => 4, :cols => 100 }
-  .span2
-    %button.btn.submit_input Send message
+  .span11
+    %table
+      %tbody
+        %tr
+          %td
+            %span.user_clock{ :style => 'margin-left:5px;' }
+              <%= moment().format('HH:mm') %>
+          %td.span3{ :style => 'vertical-align:top;height:100%;' }
+            %span{ :style => 'font-weight: bold;' }
+              <%= App.user.nick() %>
+
+    %table{ :style => '' }
+      %tbody
+        %tr
+          %td{ :style => 'vertical-align:top;' }
+            %textarea.span4.user_input{ :disabled => 'disabled', :style => 'border:1px solid #666;width:98%;margin:0;', :rows => 3, :cols => 80 }
+          %td.span3{ :style => 'vertical-align:top;' }
+            %button.btn.submit_input{ :disabled => 'disabled', :style => 'margin-left:10px;' } Send message
+
+  -#.span5{ :style => 'height:60%;position:relative;' }
+  -#  %textarea.span4.user_input{ :disabled => 'disabled', :style => 'border:1px solid #666;width:auto;margin:0;height:100%;', :rows => 4, :cols => 100 }
+  -#.span2
+  -#  %button.btn.submit_input Send message

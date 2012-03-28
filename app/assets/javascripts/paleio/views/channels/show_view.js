@@ -129,6 +129,7 @@ define([
                 },
                 onclose: function () {
                     $(thiz.el).find('textarea').attr('disabled','disabled').attr('placeholder', thiz.defaults.inputPlaceholderDisabled);
+                    $(thiz.el).find('.submit_input').attr('disabled','disabled');
                     $(thiz.el).find('.connected_users tr td').css({ 'color': '#ccc' });
                     clearTimeout(thiz.refresh);
                     setTimeout(function() { thiz.startWebSocketClient(); }.apply(thiz), 5000);
@@ -137,6 +138,7 @@ define([
                     var that = this;
                     $(thiz.el).find('.connected_users > tr > td').css({ 'color': '#333' });
                     $(thiz.el).find('textarea').removeAttr('disabled').attr('placeholder', thiz.defaults.inputPlaceholderEnabled).focus();
+                    $(thiz.el).find('.submit_input').removeAttr('disabled');
                     var joinInput = new JoinInput({ type: 'join' });
                     joinInput.url = '/channels/'+ thiz.model.id +'/inputs.json';
                     joinInput.save({},{
