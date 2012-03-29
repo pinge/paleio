@@ -17,11 +17,10 @@ class AddEntities < ActiveRecord::Migration
       t.integer   :channel_id
       t.string    :nick
       t.text      :raw
-      #t.boolean   :join
-      #t.boolean   :leave
       t.boolean   :paste
       t.string    :code_language
       t.integer   :created_by
+      t.string    :file
       t.timestamps
     end
 

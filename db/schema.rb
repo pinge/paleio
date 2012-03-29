@@ -55,11 +55,10 @@ ActiveRecord::Schema.define(:version => 20120325145940) do
     t.integer  "channel_id"
     t.string   "nick"
     t.text     "raw"
-    t.boolean  "join"
-    t.boolean  "leave"
     t.boolean  "paste"
     t.string   "code_language"
     t.integer  "created_by"
+    t.string   "file"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

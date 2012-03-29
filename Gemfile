@@ -12,6 +12,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'carrierwave'
+gem 'mini_magick'
 gem 'requirejs-rails'
 gem 'thin'
 gem 'haml'

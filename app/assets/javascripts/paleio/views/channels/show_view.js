@@ -36,8 +36,43 @@ define([
         events: {
 
             'click .submit_input':      'submitInput',
+            'click .new_file_upload':   'newFileUpload',
+            'click .cancel_upload':     'cancelFileUpload',
+            'click .upload':            'uploadFile',
+            'change .input-file':       'selectFile',
             'keypress textarea':        'checkInput'
 
+        },
+
+        selectFile: function (event) {
+            $(this.el).find('.upload').removeAttr('disabled');
+        },
+
+        uploadFile: function (event) {
+            if ($(event.currentTarget).attr('disabled') == 'disabled') { event.preventDefault(); return; }
+            console.log('upload!');
+            event.preventDefault();
+        },
+
+        cancelFileUpload: function (event) {
+            $(this.el).find('.cancel_upload').removeClass('cancel_upload').addClass('new_file_upload').html('Upload file');
+            $(this.el).find('.input-file, .upload').hide();
+            $(this.el).find('.input-file').val('');
+            $(this.el).find('.submit_input, textarea').removeAttr('disabled');
+            event.preventDefault();
+        },
+
+        newFileUpload: function (event) {
+            $(this.el).find('.submit_input, textarea').attr('disabled','disabled');
+            $(event.currentTarget).removeClass('new_file_upload').addClass('cancel_upload').html('Cancel');
+//            $(event.currentTarget).removeClass('new_file_upload').addClass('upload').addClass('disabled').html('Upload!');
+            $(this.el).find('.input-file, .upload').show();
+            $(this.el).find('.upload').attr('disabled','disabled');
+//            $(this.el).find('.submit_input').removeClass('submit_input').addClass('cancel_upload').html('Cancel Upload');
+//            $(this.el).find('.new_file_upload').removeClass('new_file_upload').addClass('upload').addClass('btn-success').html('Upload!');
+
+
+            event.preventDefault();
         },
 
         showPreviousInputs: function(inputs){
@@ -129,7 +164,7 @@ define([
                 },
                 onclose: function () {
                     $(thiz.el).find('textarea').attr('disabled','disabled').attr('placeholder', thiz.defaults.inputPlaceholderDisabled);
-                    $(thiz.el).find('.submit_input').attr('disabled','disabled');
+                    $(thiz.el).find('.submit_input,.new_file_upload').attr('disabled','disabled');
                     $(thiz.el).find('.connected_users tr td').css({ 'color': '#ccc' });
                     clearTimeout(thiz.refresh);
                     setTimeout(function() { thiz.startWebSocketClient(); }.apply(thiz), 5000);
@@ -138,7 +173,7 @@ define([
                     var that = this;
                     $(thiz.el).find('.connected_users > tr > td').css({ 'color': '#333' });
                     $(thiz.el).find('textarea').removeAttr('disabled').attr('placeholder', thiz.defaults.inputPlaceholderEnabled).focus();
-                    $(thiz.el).find('.submit_input').removeAttr('disabled');
+                    $(thiz.el).find('.submit_input,.new_file_upload').removeAttr('disabled');
                     var joinInput = new JoinInput({ type: 'join' });
                     joinInput.url = '/channels/'+ thiz.model.id +'/inputs.json';
                     joinInput.save({},{

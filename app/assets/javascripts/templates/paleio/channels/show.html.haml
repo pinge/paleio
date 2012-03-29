@@ -10,6 +10,14 @@
       who's connected
     %table.table.table-condensed
       %tbody.connected_users
+    %br
+    %h5
+      shared files
+    %div
+      %a.btn.new_file_upload{ :disabled => 'disabled', :style => '' } Upload file
+      %form{ :style => 'margin:0;padding:0;display:inline-block;' }
+        %input.input-file{ :type => 'file', :style => 'display:none;margin-bottom:0;' }
+      %a.btn.upload.btn-success{ :disabled => 'disabled', :style => 'display:none;' } Upload!
 
 -#.row-fluid{ :style => 'padding: 0 0 0 0.6%;font-size: 13px;min-height:20px;height:2.5%;clear:both;' }
 
@@ -31,8 +39,8 @@
         %tr
           %td{ :style => 'vertical-align:top;' }
             %textarea.span4.user_input{ :disabled => 'disabled', :style => 'border:1px solid #666;width:98%;margin:0;', :rows => 3, :cols => 80 }
-          %td.span3{ :style => 'vertical-align:top;' }
-            %button.btn.submit_input{ :disabled => 'disabled', :style => 'margin-left:10px;' } Send message
+          %td.span8{ :style => 'vertical-align:top;' }
+            %a.btn.submit_input{ :disabled => 'disabled', :style => 'margin-left:10px;' } Send message
 
   -#.span5{ :style => 'height:60%;position:relative;' }
   -#  %textarea.span4.user_input{ :disabled => 'disabled', :style => 'border:1px solid #666;width:auto;margin:0;height:100%;', :rows => 4, :cols => 100 }
