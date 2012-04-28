@@ -1,0 +1,16 @@
+%ul.nav.nav-tabs{ :style => 'margin-top:20px;' }
+  <% _.each(channels, function(channel) { %>
+
+  %li
+    %a{ :href => "#<%= channel.get('code') %>" } <%= channel.get('name') %>
+
+  <% }) %>
+
+.tab-content
+
+  <% _.each(channels, function(channel) { %>
+
+  %div.tab-pane{ :id => "<%= channel.get('code') %>" }
+    <%= channel.get('name') %>
+
+  <% }) %>

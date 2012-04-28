@@ -1,0 +1,36 @@
+.modal-header
+  %a.cancel.close{ :href => '#' } ×
+  %h3 Invite a new User
+.modal-body
+  %form
+    %fieldset
+      %legend{ :style => 'font-size:14px;line-height:25px;text-align:center;' }
+        Your contact will receive an email with the invitation link to join your Paleio account.
+        After clicking the link, they can choose their own password.
+      .row-fluid{ :style => 'padding-top:20px;' }
+        .span6
+          .control-group
+            %label.inline.control-label{ :for => 'user[name]' } Name
+            %span.help-inline.as_error
+            .controls
+              %input.user_name.span3{ :type => 'text', :name => 'user[name]', :value => '' }
+        .span6
+          .control-group
+            %label.inline.control-label{ :for => 'user[email]' } Email
+            %span.help-inline.as_error
+            .controls
+              %input.user_email.span3{ :type => 'text', :name => 'user[email]', :value => '' }
+      .row-fluid{ :style => 'padding-top:20px;' }
+        .span12
+          .control-group
+            %label.inline.control-label{ :for => 'user[name]' } Add a personal message to the email
+            %span.help-inline.as_error
+            .controls
+              %textarea.span5.user_invitation_message{ :name => 'user[invitation_message]', :style => 'height:75px;' }
+.modal-footer{ :style => 'text-align:right;' }
+  .blocked{ :style => 'display:none;padding:4px 0px;cursor:default;' }
+    %span{ :style => 'margin-right:10px;'}
+      please wait..
+    %img{ :src => '/assets/load.gif' }
+  %a.btn.small.primary.invite_user Invite
+  %a.btn.small.cancel.close{ :style => 'margin-top:0px;cursor:pointer;' } Cancel

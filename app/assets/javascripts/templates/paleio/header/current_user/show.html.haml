@@ -1,0 +1,19 @@
+<% if (App.user.loggedIn) { %>
+
+%li
+  %a{ :class => 'account<%= (Backbone.history.fragment == "account" ? "active" : "") %>', :style => 'cursor:pointer;', :href => '#account' } Account
+%li
+  %a.settings{ :style => 'cursor:pointer;', :href => '#settings' } Settings
+%li
+  %a.sign_out{ :style => 'cursor:pointer;' } Sign Out
+
+<% } else { %>
+
+%li
+  %input.span2.username{ :style => 'margin:5px 10px 0 0;', :type => 'text', :name => 'user[email]', :placeholder => "your email", :value => '' }
+%li
+  %input.span2.password{ :style => 'margin:5px 10px 0 0;', :type => 'password', :name => 'user[password]', :placeholder => "your password", :value =>  '' }
+%li
+  %a.sign_in{ :style => 'cursor:pointer;' } Sign In
+
+<% }%>
