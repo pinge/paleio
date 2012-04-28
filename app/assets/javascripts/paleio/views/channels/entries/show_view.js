@@ -4,7 +4,7 @@ define([
     "paleio/models/channels/entry",
     "text!templates/channels/entries/show.html"
 
-], function(jquery, underscore, backbone, ChannelEntry, channelEntryemplate) {
+], function(jquery, underscore, backbone, ChannelEntry, channelEntryTemplate) {
 
     return Backbone.View.extend({
 
@@ -21,7 +21,7 @@ define([
 
         render: function(){
             var thiz = this;
-            var template = _.template(channelEntryemplate, { model: this.model });
+            var template = _.template(channelEntryTemplate, { model: this.model });
             $(this.el).html(template);
             $(this.el).find('td').fadeIn('slow', function(){
                 if (thiz.model.get('is_code')) {

@@ -22,7 +22,7 @@ define([
         },
 
         clearView: function () {
-            if (!_.isNull(this.view)) { this.view.remove(); $('body > .navbar').after($('<div>').addClass('container')); }
+            if (!_.isNull(this.view)) { this.view.remove(); $('body > .container').remove(); $('body > .navbar').after($('<div>').addClass('container')); }
         },
 
         index: function( actions ){
@@ -35,7 +35,7 @@ define([
         enterChannel: function (channelCode) {
             if (!App.user.loggedIn){ Backbone.history.navigate("", true); return false; }
             var thiz = this;
-            App.user.channels.fetch({
+            App.account.channels.fetch({
                 success: function(collection, response){
                     thiz.clearView();
                     var channel = _.detect(collection.models, function(m){ return m.get('code') == channelCode; });

@@ -48,7 +48,7 @@ define([
                 var channelsListView = new IndexChannelsHeaderView();
                 $(this.el).find('.brand').after(channelsListView.el);
                 this.model.user.on('change', channelsListView.remove, channelsListView);
-                App.user.channels.fetch();
+                App.account.channels.fetch();
             } else {
                 $(this.el).find('a.sign_up').closest('li').show();
             }

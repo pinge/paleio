@@ -6,14 +6,13 @@ module Paleio
 
       validates_presence_of :raw, :code_language
       validates_inclusion_of :paste, :in => [true,false]
+      after_create :broadcast
 
-      private
-      def broadcast
-        @@redis.publish("channel_#{self.channel.code}", { :type => 'code', :code => {
-            :code => self.raw, :timestamp => self.created_at.to_i * 1000, :nick => self.nick,
-            :language => self.code_language
-        } }.to_json)
-        true
+      def as_json(options = {})
+        {
+            :type => 'code', :id => self.id, :code => self.raw, :timestamp => self.created_at.to_i * 1000,
+            :paste => self.paste, :language => self.code_language, :channel_id => self.channel_id, :nick => self.nick
+        }
       end
 
     end

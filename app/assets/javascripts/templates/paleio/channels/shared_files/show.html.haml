@@ -1,0 +1,10 @@
+%td
+  <% if (model.get('is_image')) { %>
+  %i.icon-picture
+  <% } else if (model.get('is_compressed')) { %>
+  %i.icon-folder-close
+  <% } else { %>
+  %i.icon-file
+  <% } %>
+  %a{ :href => "<%= model.get('url') %>", :target => "_blank" } <%= model.get('filename') %>
+  %span{ :style => 'font-size:10px;' } <%= model.getHumanizedFileSize() %>

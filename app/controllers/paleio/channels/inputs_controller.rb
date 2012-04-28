@@ -10,7 +10,7 @@ module Paleio
       def index
         respond_to do |format|
           format.json{
-            channel_inputs = @channel.inputs.where('created_at > ?', Time.zone.now.at_beginning_of_day).all
+            channel_inputs = @channel.inputs.where('created_at > ?', Time.zone.now.at_beginning_of_day).order('created_at ASC').all
             render :json => channel_inputs.to_json, :status => :ok
           }
         end
@@ -29,6 +29,8 @@ module Paleio
                 Paleio::Input::Text.create!(params[:input].merge!(common_params))
               when 'code' then
                 Paleio::Input::Code.create!(params[:input].merge!(common_params))
+              when 'file' then
+                Paleio::Input::File.create!(params[:input].merge!(common_params))
             end
             render :json => {}.to_json, :status => :created
           }

@@ -6,14 +6,13 @@ module Paleio
 
       validates_presence_of :raw
       validates_inclusion_of :paste, :in => [true,false]
+      after_create :broadcast
 
-      private
-      def broadcast
-        Rails.logger.ap 'text'
-        @@redis.publish("channel_#{self.channel.code}", { :type => 'text', :text => {
-            :text => self.raw, :timestamp => self.created_at.to_i * 1000, :nick => self.nick
-        } }.to_json)
-        true
+      def as_json(options = {})
+        {
+            :type => 'text', :id => self.id, :text => self.raw, :timestamp => self.created_at.to_i * 1000,
+            :paste => self.paste, :channel_id => self.channel_id, :nick => self.nick
+        }
       end
 
     end

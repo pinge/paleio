@@ -1,16 +1,13 @@
 define([
 
-    "jquery", "underscore", "backbone",
-//    "paleio/views/ui/alert"
-//    "paleio/models/pool",
-//    "text!templates/my_fangool/pools/new.html"
+    "jquery", "underscore", "backbone"
 
 ], function(jquery, underscore, backbone) {
 
     return Backbone.View.extend({
 
         tagName: 'div',
-        class: '_myfangool_edit_entity_view',
+        class: '_paleio_edit_entity_view',
         template: null,
 
         defaults: {

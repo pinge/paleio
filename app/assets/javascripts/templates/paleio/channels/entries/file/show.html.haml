@@ -1,0 +1,15 @@
+%td{ :style => 'vertical-align:top;width:35px;' }
+  <%= model.hour() %>
+%td{ :style => 'font-weight:bold;vertical-align:top;white-space:nowrap;text-align:right;' }
+  <%= model.nick() %>
+%td.input{ :style => 'vertical-align:top;padding-left:10px;width:100%;' }<
+  <% if (model.get('is_image')) { %>
+  %i.icon-picture
+  <% } else if (model.get('is_compressed')) { %>
+  %i.icon-folder-close
+  <% } else { %>
+  %i.icon-file
+  <% } %>
+  -#%i uploaded&nbsp;
+  %a{ :href => "<%= model.get('url') %>", :target => "_blank" } <%= model.get('filename') %>
+  %span{ :style => 'font-size:10px;' } <%= model.getHumanizedFileSize() %>

@@ -1,7 +1,7 @@
 define([
 
     "jquery", "underscore", "backbone",
-    "paleio/models/channels/entries/code",
+    "paleio/models/channels/entry/code",
     "text!templates/channels/entries/code/show.html"
 
 ], function(jquery, underscore, backbone, CodeEntry, codeEntryTemplate) {

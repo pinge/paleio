@@ -18,9 +18,9 @@ define([
 
         events: {
 
-            'click .nav li a.settings, .nav li a.my_fangool':                 'setActive',
-            'click .sign_in':                    'signIn',
-            'click .sign_out':                   'signOut'
+            'click .nav li a.settings':                 'setActive',
+            'click .sign_in':                           'signIn',
+            'click .sign_out':                          'signOut'
 
         },
 
@@ -42,8 +42,7 @@ define([
                             $('meta[name="csrf-token"]').attr({ content: response.token });
                             App.user.login();
                             if (Backbone.history.fragment == ""){
-                                $(thiz.el).find('a.my_fangool').click();
-                                App.router.navigate('#my/dashboard', true);
+                                App.router.navigate('#settings', true);
                             } else {
                                 App.router.navigate(Backbone.history.fragment, true);
                             }

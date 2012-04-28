@@ -16,3 +16,7 @@
 .idea/**
 .rvmrc
 .nohup.out
+
+# Ignore upload directory
+/public/uploads/*
+!/public/uploads/.gitkeep

@@ -1,7 +1,7 @@
 define([
 
     "jquery", "underscore", "backbone",
-    "paleio/models/channels/entries/join",
+    "paleio/models/channels/entry/join",
     "text!templates/channels/entries/join/show.html"
 
 ], function(jquery, underscore, backbone, JoinEntry, joinEntryTemplate) {

@@ -15,23 +15,25 @@ module Paleio
 
     def add_entry(raw_entry)
       if raw_entry.is_a?(Paleio::Input::Join)
-          Paleio::Entry::Join.create!({
-                                          :journal_id => self.id, :nickname => raw_entry.nick, :created_by => raw_entry.created_by
-                                      })
+        Paleio::Entry::Join.create!({
+                                        :journal_id => self.id, :nickname => raw_entry.nick, :created_by => raw_entry.created_by
+                                    })
+      elsif raw_entry.is_a?(Paleio::Input::Text)
+        Paleio::Entry::Text.create!({
+                                        :journal_id => self.id, :nickname => raw_entry.nick, :created_by => raw_entry.created_by,
+                                        :text => raw_entry.raw, :paste => raw_entry.paste
+                                    })
+      elsif raw_entry.is_a?(Paleio::Input::Code)
+        Paleio::Entry::Code.create!({
+                                        :journal_id => self.id, :nickname => raw_entry.nick, :created_by => raw_entry.created_by,
+                                        :text => raw_entry.raw, :paste => raw_entry.paste, :code_language => raw_entry.code_language
+                                    })
+      elsif raw_entry.is_a?(Paleio::Input::File)
+        Paleio::Entry::File.create!({
+                                        :journal_id => self.id, :nickname => raw_entry.nick, :created_by => raw_entry.created_by,
+                                        :document => raw_entry.document.filename, :paste => raw_entry.paste, :document_content_type => raw_entry.content_type
+                                    })
       end
-      #if raw_entry.is_a?(Paleio::Input::Base)
-      #  if raw_entry.is_code?
-      #    Paleio::Entry::Code.create!({
-      #                                    :journal_id => self.id, :nickname => raw_entry.nick, :text => raw_entry.raw, :paste => raw_entry.paste,
-      #                                    :code_language => raw_entry.code_language, :created_by => raw_entry.created_by
-      #                                })
-      #  else
-      #    Paleio::Entry::Text.create!({
-      #                                    :journal_id => self.id, :nickname => raw_entry.nick, :text => raw_entry.raw, :paste => raw_entry.paste,
-      #                                    :created_by => raw_entry.created_by
-      #                                })
-      #  end
-      #end
     end
 
     #def as_json(options = {})

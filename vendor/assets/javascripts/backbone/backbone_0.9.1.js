@@ -677,12 +677,17 @@
       this._byCid = {};
     },
 
+    createModel: function(attrs, options) {
+      return new this.model(attrs, options); // pull request #1148 https://github.com/documentcloud/backbone/pull/1148/files
+    },
+
     // Prepare a model or hash of attributes to be added to this collection.
     _prepareModel: function(model, options) {
       if (!(model instanceof Backbone.Model)) {
         var attrs = model;
         options.collection = this;
-        model = new this.model(attrs, options);
+//        model = new this.model(attrs, options);
+        model = this.createModel(attrs, options); // pull request #1148 https://github.com/documentcloud/backbone/pull/1148/files
         if (!model._validate(model.attributes, options)) model = false;
       } else if (!model.collection) {
         model.collection = this;

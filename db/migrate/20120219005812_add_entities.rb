@@ -20,7 +20,8 @@ class AddEntities < ActiveRecord::Migration
       t.boolean   :paste
       t.string    :code_language
       t.integer   :created_by
-      t.string    :file
+      t.string    :document
+      t.string    :content_type
       t.timestamps
     end
 
@@ -40,6 +41,8 @@ class AddEntities < ActiveRecord::Migration
       t.text      :text
       t.boolean   :paste
       t.string    :code_language
+      t.string    :document
+      t.string    :document_content_type
       t.integer   :created_by
       t.timestamps
     end

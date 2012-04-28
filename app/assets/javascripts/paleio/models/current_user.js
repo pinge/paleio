@@ -106,13 +106,12 @@ define([
 
         login: function(){
             this.loggedIn = true;
-            this.channels = new Channels();
+            if (App.account.isNew()) { console.log(this.get('account')); } // }App.account.set(this.get('account').attributes) }
             this.trigger('change');
         },
 
         logout: function(){
             this.clear({ silent: true });
-            this.loggedIn = false;
             this.trigger('change');
         }
 

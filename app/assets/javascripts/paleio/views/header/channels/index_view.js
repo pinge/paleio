@@ -25,12 +25,12 @@ define([
         },
 
         initialize: function(){
-            App.user.channels.on('reset', this.render, this);
+            App.account.channels.on('reset', this.render, this);
         },
 
         render: function(){
             var url = Backbone.history.fragment;
-            var template = _.template(indexChannelsHeaderTemplate, { channels: App.user.channels.models, active: url });
+            var template = _.template(indexChannelsHeaderTemplate, { channels: App.account.channels.models, active: url });
             $(this.el).html(template);
             return this;
         },

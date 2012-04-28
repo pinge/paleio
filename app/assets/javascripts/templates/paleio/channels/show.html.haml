@@ -1,9 +1,9 @@
-.row-fluid{ :style => 'position:fixed;top:50px;bottom:135px;display:none;padding:0;' }
+.row-fluid{ :style => 'position:fixed;top:60px;bottom:150px;display:none;padding:0;' }
   -#.span9.log_frame{ :style => 'overflow-y:auto;overflow-x:hidden;height:91%;margin:1% 0;border: 1px solid #ccc;border-radius:5px;padding:0.6%;'}
-  .span8.log_frame{ :style => 'overflow-y:auto;overflow-x:hidden;padding:4px 4px 0px 4px;height:100%;border: 1px solid #ccc;border-radius:5px;'}
+  .span8.log_frame{ :style => 'overflow-y:auto;overflow-x:hidden;padding:8px 8px 4px 8px;height:100%;border: 1px solid #ccc;border-radius:4px;'}
     %table{ :style => 'width:100%;' }
       %tbody.channel_log
-  .span3{ :style => 'margin:0 0 0 10px;border: 1px solid #ccc;border-radius:5px;padding:10px;' }
+  .span3{ :style => 'margin:0 0 0 20px;border: 1px solid #ccc;border-radius:4px;padding:8px;' }
     %h2
       <%= model.get('name') %>
     %h5
@@ -13,10 +13,13 @@
     %br
     %h5
       shared files
+    %table.table.table-condensed.shared_files
+
     %div
       %a.btn.new_file_upload{ :disabled => 'disabled', :style => '' } Upload file
-      %form{ :style => 'margin:0;padding:0;display:inline-block;' }
-        %input.input-file{ :type => 'file', :style => 'display:none;margin-bottom:0;' }
+      %span.upload_ok{ :style => 'margin-left:5px;display:none;' } file uploaded!
+      %form.file_input{ :method => 'post', :style => 'margin:0;padding:0;display:inline-block;' }
+        %input.input-file{ :name => 'input[document]', :type => 'file', :style => 'display:none;margin-bottom:0;' }
       %a.btn.upload.btn-success{ :disabled => 'disabled', :style => 'display:none;' } Upload!
 
 -#.row-fluid{ :style => 'padding: 0 0 0 0.6%;font-size: 13px;min-height:20px;height:2.5%;clear:both;' }
@@ -28,7 +31,7 @@
       %tbody
         %tr
           %td
-            %span.user_clock{ :style => 'margin-left:5px;' }
+            %span.user_clock{ :style => 'margin-left:8px;' }
               <%= moment().format('HH:mm') %>
           %td.span3{ :style => 'vertical-align:top;height:100%;' }
             %span{ :style => 'font-weight: bold;' }

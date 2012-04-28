@@ -100,7 +100,6 @@ Thread.new do
 
       ws.onmessage do |msg|
         message = JSON.parse(msg)
-        p "paleio onmessage: #{msg}"
         if ['ping'].include?(message['type'])
           nick = message['nick']
           email = message['email']
@@ -137,7 +136,6 @@ end
 Thread.new do
   @redis.subscribe("channel_#{channel_code}") do |on|
     on.message do |chan, msg| # When a message is published to 'channel_code'
-      puts "sending message: #{msg}"
       SOCKETS.each {|s| s.send msg} # Send out the message on each open socket
     end
   end

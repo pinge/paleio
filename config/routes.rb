@@ -4,20 +4,16 @@ Paleio::Application.routes.draw do
 
   resources :channels, :controller => 'paleio/channels' do
     resources :inputs, :controller => 'paleio/channels/inputs'
+    resources :files, :controller => 'paleio/channels/entries/files'
   end
 
   resources :accounts, :controller => 'paleio/accounts' do
     resources :users, :controller => 'paleio/accounts/users'
     resources :channels, :controller => 'paleio/accounts/channels'
   end
-  #resources :res1, :controller => 'con1' do
-  #  member do
-  #    put 'newaction'
-  #  end
-  #end
 
   root :to => 'welcome#index'
-  # TODO set a controller for routes without hashtag # and try to redirect to the same path with the hashtag prepended
+  # TODO set a controller for routes without hashtag # and try to redirect to the same path prepended with the hashtag
 
   resource :bootstrap, :controller => 'bootstrap'
 

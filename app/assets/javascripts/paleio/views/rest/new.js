@@ -10,7 +10,7 @@ define([
     return Backbone.View.extend({
 
         tagName: 'div',
-        className: '_myfangool_new_entity_view',
+        className: '_paleio_new_entity_view',
         model: null,
         template: null,
 

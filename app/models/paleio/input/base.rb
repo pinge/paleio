@@ -10,7 +10,7 @@ module Paleio
       validates_presence_of :type, :created_by, :channel_id, :nick
       belongs_to :channel,          :class_name => 'Paleio::Channel',         :foreign_key => 'channel_id'
       belongs_to :creator,          :class_name => 'User',                    :foreign_key => 'created_by'
-      after_create :broadcast, :create_journal_entry
+      after_create :create_journal_entry
 
       def is_code?
         !self.code_language.blank?
@@ -26,6 +26,11 @@ module Paleio
       private
       def create_journal_entry
         self.channel.add_journal_entry(self)
+        true
+      end
+
+      def broadcast
+        @@redis.publish("channel_#{self.channel.code}", self.to_json)
         true
       end
 

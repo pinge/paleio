@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20120325145940) do
   create_table "accounts", :force => true do |t|
     t.string   "subdomain"
     t.integer  "created_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "channels", :force => true do |t|
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(:version => 20120325145940) do
     t.integer  "created_by"
     t.string   "current_host"
     t.integer  "current_port"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "entries", :force => true do |t|
@@ -45,9 +45,11 @@ ActiveRecord::Schema.define(:version => 20120325145940) do
     t.text     "text"
     t.boolean  "paste"
     t.string   "code_language"
+    t.string   "document"
+    t.string   "document_content_type"
     t.integer  "created_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   create_table "inputs", :force => true do |t|
@@ -58,9 +60,10 @@ ActiveRecord::Schema.define(:version => 20120325145940) do
     t.boolean  "paste"
     t.string   "code_language"
     t.integer  "created_by"
-    t.string   "file"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "document"
+    t.string   "content_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "journals", :force => true do |t|
@@ -69,8 +72,8 @@ ActiveRecord::Schema.define(:version => 20120325145940) do
     t.integer  "year"
     t.integer  "month"
     t.integer  "day"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -92,8 +95,8 @@ ActiveRecord::Schema.define(:version => 20120325145940) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
     t.string   "invitation_token",       :limit => 60
     t.datetime "invitation_sent_at"
     t.datetime "invitation_accepted_at"

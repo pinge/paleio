@@ -1,14 +1,25 @@
 # encoding: utf-8
 
-class ChannelUploader < CarrierWave::Uploader::Base
+class DocumentUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
+  # mime types support ? needed ?
+  include CarrierWave::MimeTypes
+  process :set_content_type
+
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
+
+  after :store, :broadcast
+
+  def broadcast(file)
+    model.send(:broadcast)
+    true
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -41,8 +52,9 @@ class ChannelUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+    @original_filename || model.read_attribute(:document)
+     #"something.jpg" #if original_filename
+  end
 
 end

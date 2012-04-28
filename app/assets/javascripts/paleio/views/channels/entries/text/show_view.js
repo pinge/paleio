@@ -1,7 +1,7 @@
 define([
 
     "jquery", "underscore", "backbone",
-    "paleio/models/channels/entries/text",
+    "paleio/models/channels/entry/text",
     "text!templates/channels/entries/text/show.html"
 
 ], function(jquery, underscore, backbone, TextEntry, textEntryTemplate) {
@@ -12,7 +12,6 @@ define([
         className: '_channel_entry text',
 
         defaults: {
-
         },
 
         events: {

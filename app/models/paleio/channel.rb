@@ -7,6 +7,7 @@ module Paleio
     set_table_name 'channels'
     has_many :inputs,         :class_name => 'Paleio::Input::Base',           :foreign_key => 'channel_id'
     has_many :join_inputs,    :class_name => 'Paleio::Input::Join',           :foreign_key => 'channel_id'
+    has_many :file_inputs,    :class_name => 'Paleio::Input::File',           :foreign_key => 'channel_id'
     has_many :journals,       :class_name => 'Paleio::Journal',         :foreign_key => 'channel_id'
     validates_presence_of :name, :code, :account_id, :current_host, :current_port
     validates_uniqueness_of :current_port
@@ -70,7 +71,6 @@ module Paleio
     end
 
     def start_websocket_server
-      ap "#{Rails.root}/lib/paleio/channel_scripts/channels.rb"
       script = "
           Bluepill.application('paleio') do |app|"
       self.class.all.each do |channel|
@@ -92,12 +92,7 @@ module Paleio
           # (Apache User and Group were set to www-data) -> executing 'whoami' in a bash shell using popen4 returns 'nobody'
           stdin.puts "rvmsudo bluepill quit; pkill -9 -f socket_server.rb; rvmsudo bluepill load #{Rails.root}/lib/paleio/channel_scripts/channels.rb"
           stdin.close
-          puts "pid        : #{ pid }"
-          puts "stdout     : #{ stdout.read.strip }"
-          puts "stderr     : #{ stderr.read.strip }"
         end
-        puts "status     : #{ status.inspect }"
-        puts "exitstatus : #{ status.exitstatus }"
       end
       true
     end

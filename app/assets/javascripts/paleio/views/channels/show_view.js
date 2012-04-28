@@ -2,9 +2,10 @@ define([
 
     "jquery", "underscore", "backbone",
     "order!paleio/models/channels/entry",
-    "order!paleio/models/channels/entries/text",
-    "order!paleio/models/channels/entries/code",
-    "order!paleio/models/channels/entries/join",
+    "order!paleio/models/channels/entry/text",
+    "order!paleio/models/channels/entry/code",
+    "order!paleio/models/channels/entry/join",
+    "order!paleio/models/channels/entry/file",
     "order!paleio/models/channels/inputs/join",
     "order!paleio/collections/inputs",
     "order!paleio/collections/channels/entries",
@@ -12,10 +13,12 @@ define([
     "order!paleio/views/channels/entries/text/show_view",
     "order!paleio/views/channels/entries/code/show_view",
     "order!paleio/views/channels/entries/join/show_view",
+    "order!paleio/views/channels/entries/file/show_view",
+    "order!paleio/views/channels/shared_files/index_view",
     "text!templates/channels/show.html"
 
-], function(jquery, underscore, backbone, Entry, TextEntry, CodeEntry, JoinEntry, JoinInput, Inputs, ChannelEntries,
-            ChannelEntryView, TextEntryView, CodeEntryView, JoinEntryView, channelTemplate) {
+], function(jquery, underscore, backbone, Entry, TextEntry, CodeEntry, JoinEntry, FileEntry, JoinInput, Inputs, ChannelEntries,
+            ChannelEntryView, TextEntryView, CodeEntryView, JoinEntryView, FileEntryView, SharedFilesView, channelTemplate) {
 
     return Backbone.View.extend({
 
@@ -24,7 +27,8 @@ define([
         entries: null, // entries are the channel log
         inputs: null, // inputs are the users inputs from the past
         clockIntervalId: null,
-        inputViews: {},
+        entriesViews: {},
+        sharedFiles: null,
 
         defaults: {
 
@@ -44,54 +48,9 @@ define([
 
         },
 
-        selectFile: function (event) {
-            $(this.el).find('.upload').removeAttr('disabled');
-        },
-
-        uploadFile: function (event) {
-            if ($(event.currentTarget).attr('disabled') == 'disabled') { event.preventDefault(); return; }
-            console.log('upload!');
-            event.preventDefault();
-        },
-
-        cancelFileUpload: function (event) {
-            $(this.el).find('.cancel_upload').removeClass('cancel_upload').addClass('new_file_upload').html('Upload file');
-            $(this.el).find('.input-file, .upload').hide();
-            $(this.el).find('.input-file').val('');
-            $(this.el).find('.submit_input, textarea').removeAttr('disabled');
-            event.preventDefault();
-        },
-
-        newFileUpload: function (event) {
-            $(this.el).find('.submit_input, textarea').attr('disabled','disabled');
-            $(event.currentTarget).removeClass('new_file_upload').addClass('cancel_upload').html('Cancel');
-//            $(event.currentTarget).removeClass('new_file_upload').addClass('upload').addClass('disabled').html('Upload!');
-            $(this.el).find('.input-file, .upload').show();
-            $(this.el).find('.upload').attr('disabled','disabled');
-//            $(this.el).find('.submit_input').removeClass('submit_input').addClass('cancel_upload').html('Cancel Upload');
-//            $(this.el).find('.new_file_upload').removeClass('new_file_upload').addClass('upload').addClass('btn-success').html('Upload!');
-
-
-            event.preventDefault();
-        },
-
-        showPreviousInputs: function(inputs){
+        showPreviousEntries: function (entries) {
             var thiz = this;
-            _.each(inputs.models, function(input){
-                var entry;
-                if (input.get('is_join')) {
-                    var entryAttributes = { nick: input.get('nick'), timestamp: input.get('timestamp') };
-                    entry = new JoinEntry(entryAttributes);
-                } else if (input.get('is_code')) {
-                    var entryAttributes = { nick: input.get('nick'), code: input.get('input'), language: input.get('code_language'), timestamp: input.get('timestamp') };
-                    entry = new CodeEntry(entryAttributes);
-                } else {
-                    var entryAttributes = { nick: input.get('nick'), text: input.get('input'), timestamp: input.get('timestamp') };
-                    entry = new TextEntry(entryAttributes);
-                }
-                thiz.entries.add(entry, { silent: true });
-                thiz.showEntry(entry);
-            });
+            _.each(entries.models, function (entry) { thiz.showEntry(entry); });
             $(this.el).find('.channel_log').fadeIn('slow');
             $(this.el).find('.log_frame').scrollTop($(this.el).find('.log_frame > table').height() - $(this.el).find('.log_frame').height());
         },
@@ -103,25 +62,47 @@ define([
                 return new CodeEntryView({ model: entry });
             } else if (entry instanceof TextEntry) {
                 return new TextEntryView({ model: entry });
-            } else if (entry instanceof JoinEntry) {
-                return new JoinEntryView({ model: entry });
+            } else if (entry instanceof FileEntry) {
+                return new FileEntryView({ model: entry });
             } else {
                 return new ChannelEntryView({ model: entry });
             }
         },
 
-        showEntry: function(entry){
-            var entryView = this.createEntryView(entry);
-            $(this.el).find('.channel_log').append(entryView.el);
-            entryView.render();
+        showEntry: function (entry) {
+            if (!_.isEmpty(this.entriesViews)) {
+                var lastShownStatus = this.entries.lastShownStatusBefore(entry);
+                if (!_.isNull(lastShownStatus) && !_.isUndefined(lastShownStatus)) {
+                    if (lastShownStatus.get('nick') == entry.get('nick') && (entry.get('timestamp') - lastShownStatus.get('timestamp')) < 5 * 60 * 1000) {
+                        if (_.include(_.keys(this.entriesViews), lastShownStatus.cid)) {
+                            entry.hideNick = true;
+                            entry.hideHour = true;
+                        }
+                    }
+                }
+            }
+            this.entriesViews[entry.cid] = this.createEntryView(entry);
+            $(this.el).find('.channel_log').append(this.entriesViews[entry.cid].el);
+            this.entriesViews[entry.cid].render();
         },
 
-        showNewEntry: function(entry){
-            var entryView = this.createEntryView(entry);
-            $(this.el).find('.channel_log').append(entryView.el);
-            $(entryView.el).css({ 'display': 'none' });
-            entryView.render();
-            $(entryView.el).fadeIn('slow');
+        showNewEntry: function (entry) {
+            if (!_.isEmpty(this.entriesViews)) {
+                var lastShownStatus = this.entries.lastShownStatusBefore(entry);
+                if (!_.isNull(lastShownStatus) && !_.isUndefined(lastShownStatus)) {
+                    if (lastShownStatus.get('nick') == entry.get('nick') && (entry.get('timestamp') - lastShownStatus.get('timestamp')) < 5 * 60 * 1000) {
+                        if (_.include(_.keys(this.entriesViews), lastShownStatus.cid)) {
+                            entry.hideNick = true;
+                            entry.hideHour = true;
+                        }
+                    }
+                }
+            }
+            this.entriesViews[entry.cid] = this.createEntryView(entry);
+            $(this.el).find('.channel_log').append(this.entriesViews[entry.cid].el);
+            $(this.entriesViews[entry.cid].el).css({ 'display': 'none' });
+            this.entriesViews[entry.cid].render();
+            $(this.entriesViews[entry.cid].el).fadeIn('slow');
             $(this.el).find('.log_frame').stop().animate({ scrollTop: $(this.el).find('.log_frame > table').height() - $(this.el).find('.log_frame').height() }, 'slow');
         },
 
@@ -138,29 +119,25 @@ define([
             thiz.model.connect({
                 onmessage: function (event) {
                     var data; try{ data = JSON.parse(event.data); } catch(e){ data = {}; }
-                    switch (data.type) {
-                        case 'code':
-                            var entryAttributes = { nick: data.code.nick, timestamp: data.code.timestamp, code: data.code.code, language: data.code.language }
-                            var entry = new CodeEntry(entryAttributes); thiz.entries.add(entry);
-                            break;
-                        case 'text':
-                            var entryAttributes = { nick: data.text.nick, timestamp: data.text.timestamp, text: data.text.text }
-                            var entry = new TextEntry(entryAttributes); thiz.entries.add(entry);
-                            break;
-                        case 'join':
-                            var entryAttributes = { nick: data.join.nick, timestamp: data.join.timestamp }
-                            var entry = new JoinEntry(entryAttributes); thiz.entries.add(entry);
-                            break;
-                        case 'current_users':
-                            $(thiz.el).find('.connected_users').empty();
-                            // TODO current users views.. this works for now
-                            _.each(data.users, function (connectedUser) {
-                                var cu = $('<tr>');
-                                cu.append($('<td>').html(connectedUser.nick));
-                                $(thiz.el).find('.connected_users').append(cu);
-                            });
-                            break;
+                    var entry;
+                    if (data.type === "code") {
+                        entry = new CodeEntry(data);
+                    } else if (data.type === "text") {
+                        entry = new TextEntry(data);
+                    } else if (data.type === "join") {
+                        entry = new JoinEntry(data);
+                    } else if (data.type === "file") {
+                        entry = new FileEntry(data); thiz.sharedFiles.add(entry);
+                    } else if (data.type === 'current_users') {
+                        $(thiz.el).find('.connected_users').empty(); // TODO current users views.. this works for now
+                        _.each(data.users, function (connectedUser) {
+                            var cu = $('<tr>');
+                            cu.append($('<td>').html(connectedUser.nick));
+                            $(thiz.el).find('.connected_users').append(cu);
+                        });
                     }
+                    if (entry) { thiz.entries.add(entry); }
+                    else { console.log('web socket data not recognized', data, event); }
                 },
                 onclose: function () {
                     $(thiz.el).find('textarea').attr('disabled','disabled').attr('placeholder', thiz.defaults.inputPlaceholderDisabled);
@@ -187,15 +164,15 @@ define([
 
         initialize: function(){
             var thiz = this;
-            this.entries = new ChannelEntries({ url: '/channels/'+ this.model.id +'/inputs.json' });
-            this.inputs = new Inputs();
-            this.inputs.url = '/channels/'+ this.model.id +'/inputs.json';
-            this.inputs.on('add', this.showNewEntry, this);
+            this.entries = new ChannelEntries();
+            this.entries.url = '/channels/'+ this.model.id +'/inputs.json';
             this.entries.on('add', this.showNewEntry, this);
-            this.inputs.on('reset', this.showPreviousInputs, this);
+            this.entries.on('reset', this.showPreviousEntries, this);
+            this.sharedFiles = new ChannelEntries();
+            this.sharedFiles.url = '/channels/'+ this.model.id +'/files.json';
             this.render();
-            this.inputs.fetch({
-                success: function(collection, response){
+            this.entries.fetch({
+                success: function (collection, response) {
                     thiz.startWebSocketClient();
                 }
             });
@@ -206,12 +183,65 @@ define([
             var template = _.template(channelTemplate, { model: this.model });
             $(this.el).html(template).find('.channel_log').css({ 'display': 'none' });;
             $(this.el).find('.user_input').attr({ 'onpaste': "$(this).data('paste',true)" }); // patch for HAML bug
-            $(window).resize(function(event){
+            $(this.el).find('form.file_input').attr('action','/channels/'+ this.model.id +'/inputs.json');
+            var options = {
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: { 'input[type]': 'file' },
+                success: function(response) {
+                    console.log('success', response);
+                    thiz.cancelFileUpload();
+                    $(thiz.el).find('.upload_ok').show().fadeOut(2000);
+                },
+                error: function(response) {
+                    $(thiz.el).find('.cancel_upload').html('Cancel').removeAttr('disabled');
+                    $(thiz.el).find('.input-file, .upload').show();
+                    alert('error uploading file');
+                    console.log('error', response);
+                }
+            };
+            $(this.el).find('form.file_input').submit(function () {
+                $(this).ajaxSubmit(options);
+                return false;
+            });
+            $(window).resize(function (event) {
                 $(thiz.el).find('.log_frame').stop().animate({ scrollTop: $(thiz.el).find('.log_frame > table').height() - $(thiz.el).find('.log_frame').height() }, 'slow');
             });
+            var sharedFilesView = new SharedFilesView({ collection: this.sharedFiles });
+            $(this.el).find('.shared_files').html(sharedFilesView.el);
+            this.sharedFiles.fetch();
             $('body > .navbar, body > .container .row-fluid').fadeIn('fast');
             this.clockIntervalId = setInterval(function () { $(thiz.el).find('.user_clock').html(moment().format('HH:mm')); }, 5000);
             return this;
+        },
+
+        uploadFile: function (event) {
+            if ($(event.currentTarget).attr('disabled') == 'disabled') { event.preventDefault(); return; }
+            $(this.el).find('.input-file, .upload').hide();
+            $(this.el).find('.cancel_upload').attr('disabled','disabled').html('Uploading file..');
+            $(this.el).find('form.file_input').submit();
+        },
+
+        selectFile: function (event) {
+            $(this.el).find('.upload').removeAttr('disabled');
+            event.preventDefault();
+        },
+
+        cancelFileUpload: function (event) {
+            $(this.el).find('.cancel_upload').removeClass('cancel_upload').addClass('new_file_upload').html('Upload file').removeAttr('disabled');
+            $(this.el).find('.input-file, .upload').hide();
+            $(this.el).find('.input-file').val('');
+            $(this.el).find('.submit_input, textarea').removeAttr('disabled');
+            if (event) { event.preventDefault(); }
+        },
+
+        newFileUpload: function (event) {
+            if ($(event.currentTarget).attr('disabled') == 'disabled') { event.preventDefault(); return; }
+            $(this.el).find('.submit_input, textarea').attr('disabled','disabled');
+            $(event.currentTarget).removeClass('new_file_upload').addClass('cancel_upload').html('Cancel');
+            $(this.el).find('.input-file, .upload').show();
+            $(this.el).find('.upload').attr('disabled','disabled');
+            event.preventDefault();
         },
 
         submitInput: function(event){
