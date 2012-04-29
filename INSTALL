@@ -1,0 +1,46 @@
+oracle virtualbox + debian squeeze installation:
+
+- install virtualbox
+- download debian squeeze network installation image (e.g. debian-6.0.4-amd64-netinst.iso)
+- create a new virtual machine (bridged network preferably)
+- install debian squeeze in the new vm with:
+  - advanced options > expert install
+  - no additional installer components from cd needed
+  - create user paleio to run the application
+  - use linux kernel 2.6.32 generic
+  - select no software to install
+  - use GRUB bootloader
+  - root~/> apt-get update; apt-get install sudo openssh-server
+  - root~/> vi /etc/sudoers (add paleio user to sudoers)
+
+- add postgresql 9 repo to debian squeeze:
+  append 'deb http://backports.debian.org/debian-backports squeeze-backports main' to sources.list
+- add nodejs sid repo to debian squeeze:
+  append 'deb deb http://ftp.us.debian.org/debian/ sid main' to sources.list
+- install dependencies:
+  paleio~/> sudo apt-get update
+  paleio~/> sudo apt-get install build-essential curl git bzip2 libncurses5-dev libreadline-dev nodejs
+  paleio~/> sudo apt-get -t squeeze-backports install postgresql-9.1 libpq-dev
+- create database paleio and add user paleio with privileges to postgresql
+  paleio~/> sudo su - postgres
+  paleio~/> psql
+  postgres=# CREATE USER paleio WITH PASSWORD 'dev';
+  postgres=# CREATE DATABASE paleio;
+  postgres=# GRANT ALL PRIVILEGES ON DATABASE paleio to paleio;
+- install rvm and ruby-1.9.2-p290:
+  paleio~/> curl -L get.rvm.io | bash -s stable
+  paleio~/> rvm pkg install zlib; rvm pkg install openssl; rvm pkg install iconv
+  paleio~/> rvm install ruby-1.9.2-p290
+- clone paleio github repo:
+  paleio~/> git clone git://github.com/pinge/paleio.git
+  paleio~/> cd paleio
+  paleio~/paleio> echo 'rvm use ruby-1.9.2-p290@paleio --create' > .rvmrc
+  paleio~/paleio> cd . (trust .rvmrc)
+  paleio~/paleio> bundle install
+  paleio~/paleio> rake db:migrate
+  paleio~/paleio> rails server thin
+- point your browser to http://yourvmiporhost:3000
+
+debian squeeze 64 bits quirks:
+  - if you can't install gem pg with error 'Can't find the PostgreSQL client library (libpq)':
+    paleio~/paleio> ARCHFLAGS='-arch x86_64' gem install pg -- --with-pg-config=/usr/bin/pg_config --with-pg-lib=/usr/lib
