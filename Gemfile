@@ -14,7 +14,7 @@ end
 
 gem 'carrierwave', '0.6.0'
 gem 'mini_magick', '3.4'
-gem 'requirejs-rails', '0.7.0'
+gem 'requirejs-rails', '0.7.3'
 gem 'thin', '1.3.1'
 gem 'haml', '3.1.4'
 gem 'ejs', '1.0.0'

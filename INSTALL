@@ -38,8 +38,12 @@ oracle virtualbox + debian squeeze installation:
   paleio~/paleio> cd . (trust .rvmrc)
   paleio~/paleio> bundle install
   paleio~/paleio> rake db:migrate
+  paleio~/paleio> vi config/environment.rb (configure smtp - default setup for sendgrid)
   paleio~/paleio> rails server thin
-- point your browser to http://yourvmiporhost:3000
+- point your browser to http://yourvmiporhost:3000 and sign up
+- production environment:
+  paleio~/paleio> rake assets:precompile
+  paleio~/paleio> rails server thin -eproduction -p80
 
 debian squeeze 64 bits quirks:
   - if you can't install gem pg with error 'Can't find the PostgreSQL client library (libpq)':
