@@ -20,3 +20,6 @@
 # Ignore upload directory
 /public/uploads/*
 !/public/uploads/.gitkeep
+
+# Ignore configuration files that might have sensitive data
+config/environment.rb
