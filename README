@@ -2,4 +2,29 @@ paleio
 
 paleio is a collaboration chat. with file sharing. and invitations. and syntax highlight. and image preview.
 
+works with (at least):
+- chrome 18
+- safari 5
+- firefox 11
+
+main dependencies:
+- rvm with ruby 1.9.2-p290
+- rails 3.2.2
+- postgresql 9.1
+- redis 2.x
+- devise 2.0.4
+- eventmachine em-websocket 0.3.6
+- bluepill 0.6.0
+- requirejs
+- backbone 0.9.1
+- bootstrap 2.0.1
+
 check INSTALL for a fast setup in Oracle VirtualBox.
+
+TODO:
+- support multiple accounts
+- specs and consequent refactor
+- replace bluepill+open4
+- channel history navigation and search
+- no websockets support fallback
+- heroku installation (with pusher addon)

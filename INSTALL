@@ -2,7 +2,7 @@ oracle virtualbox + debian squeeze installation:
 
 - install virtualbox
 - download debian squeeze network installation image (e.g. debian-6.0.4-amd64-netinst.iso)
-- create a new virtual machine (bridged network preferably)
+- create a new virtual machine (2 cores, 512mb ram, bridged network)
 - install debian squeeze in the new vm with:
   - advanced options > expert install
   - no additional installer components from cd needed
@@ -15,15 +15,15 @@ oracle virtualbox + debian squeeze installation:
 
 - add postgresql 9 repo to debian squeeze:
   append 'deb http://backports.debian.org/debian-backports squeeze-backports main' to sources.list
-- add nodejs sid repo to debian squeeze:
+- add redis and nodejs sid repo to debian squeeze:
   append 'deb deb http://ftp.us.debian.org/debian/ sid main' to sources.list
 - install dependencies:
   paleio~/> sudo apt-get update
-  paleio~/> sudo apt-get install build-essential curl git bzip2 libncurses5-dev libreadline-dev nodejs
+  paleio~/> sudo apt-get install build-essential curl git bzip2 libncurses5-dev libreadline-dev redis-server nodejs
   paleio~/> sudo apt-get -t squeeze-backports install postgresql-9.1 libpq-dev
 - create database paleio and add user paleio with privileges to postgresql
   paleio~/> sudo su - postgres
-  paleio~/> psql
+  postgres~/> psql
   postgres=# CREATE USER paleio WITH PASSWORD 'dev';
   postgres=# CREATE DATABASE paleio;
   postgres=# GRANT ALL PRIVILEGES ON DATABASE paleio to paleio;

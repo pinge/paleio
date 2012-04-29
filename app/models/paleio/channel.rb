@@ -71,13 +71,14 @@ module Paleio
     end
 
     def start_websocket_server
+      ruby_bin = "#{ENV['MY_RUBY_HOME']}/bin/ruby"
       script = "
-          Bluepill.application('paleio') do |app|"
+          Bluepill.application('paleio', { :base_dir => '/tmp/paleio', :log_file => '/tmp/paleio.log' }) do |app|"
       self.class.all.each do |channel|
         script += "
             app.process('#{channel.code}_channel') do |process|
-              process.start_command = '/usr/local/rvm/rubies/ruby-1.9.2-p290/bin/ruby #{Rails.root}/socket_server.rb #{channel.code} #{channel.current_port}'
-              process.pid_file = '#{Rails.root}/tmp/pids/paleio_channel_#{channel.code}_#{Time.zone.now.to_i}.pid'
+              process.start_command = '#{ruby_bin} #{Rails.root}/socket_server.rb #{channel.code} #{channel.current_port}'
+              process.pid_file = '/tmp/paleio/pids/paleio_channel_#{channel.code}_#{Time.zone.now.to_i}.pid'
               process.daemonize = true
             end"
       end
@@ -90,7 +91,7 @@ module Paleio
           # in /etc/sudoers, nodoby should have an entry with NOPASSWD set for this to work under Apache Passenger
           # in /etc/passwd, nobody's entry should have /bin/bash as shell (so rvm can be executed)
           # (Apache User and Group were set to www-data) -> executing 'whoami' in a bash shell using popen4 returns 'nobody'
-          stdin.puts "rvmsudo bluepill quit; pkill -9 -f socket_server.rb; rvmsudo bluepill load #{Rails.root}/lib/paleio/channel_scripts/channels.rb"
+          stdin.puts "bluepill --base-dir /tmp/paleio --logfile /tmp/paleio.log --no-privileged quit; pkill -9 -f socket_server.rb; bluepill --base-dir /tmp/paleio --logfile /tmp/paleio.log --no-privileged load #{Rails.root}/lib/paleio/channel_scripts/channels.rb"
           stdin.close
         end
       end

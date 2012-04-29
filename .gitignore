@@ -22,4 +22,5 @@
 !/public/uploads/.gitkeep
 
 # Ignore configuration files that might have sensitive data
+config/database.yml
 config/environment.rb
