@@ -2,7 +2,7 @@ oracle virtualbox + debian squeeze installation:
 
 - install virtualbox
 - download debian squeeze network installation image (e.g. debian-6.0.4-amd64-netinst.iso)
-- create a new virtual machine (2 cores, 512mb ram, bridged network)
+- create a new virtual machine (2 cores, 512mb ram, 2gb storage, bridged network)
 - install debian squeeze in the new vm with:
   - advanced options > expert install
   - no additional installer components from cd needed
@@ -13,13 +13,17 @@ oracle virtualbox + debian squeeze installation:
   - root~/> apt-get update; apt-get install sudo openssh-server
   - root~/> vi /etc/sudoers (add paleio user to sudoers)
 
-- add postgresql 9 repo to debian squeeze:
-  append 'deb http://backports.debian.org/debian-backports squeeze-backports main' to sources.list
-- add redis and nodejs sid repo to debian squeeze:
-  append 'deb deb http://ftp.us.debian.org/debian/ sid main' to sources.list
+
 - install dependencies:
   paleio~/> sudo apt-get update
-  paleio~/> sudo apt-get install build-essential curl git bzip2 libncurses5-dev libreadline-dev redis-server nodejs
+  paleio~/> sudo apt-get install build-essential curl git bzip2 libncurses5-dev libreadline-dev
+- add postgresql 9 repo to debian squeeze:
+  append 'deb http://backports.debian.org/debian-backports/ squeeze-backports main' to sources.list
+- add redis and nodejs sid repo to debian squeeze:
+  append 'deb http://ftp.us.debian.org/debian/ sid main' to sources.list
+- install more dependencies:
+  paleio~/> sudo apt-get update
+  paleio~/> sudo apt-get install redis-server nodejs
   paleio~/> sudo apt-get -t squeeze-backports install postgresql-9.1 libpq-dev
 - create database paleio and add user paleio with privileges to postgresql
   paleio~/> sudo su - postgres
@@ -29,6 +33,7 @@ oracle virtualbox + debian squeeze installation:
   postgres=# GRANT ALL PRIVILEGES ON DATABASE paleio to paleio;
 - install rvm and ruby-1.9.2-p290:
   paleio~/> curl -L get.rvm.io | bash -s stable
+  paleio~/> source /home/paleio/.rvm/scripts/rvm
   paleio~/> rvm pkg install zlib; rvm pkg install openssl; rvm pkg install iconv
   paleio~/> rvm install ruby-1.9.2-p290
 - clone paleio github repo:

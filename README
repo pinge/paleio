@@ -2,12 +2,12 @@ paleio
 
 paleio is a collaboration chat. with file sharing. and invitations. and syntax highlight. and image preview.
 
-works with (at least):
+SUPPORTED BROWSERS:
 - chrome 18
 - safari 5
 - firefox 11
 
-main dependencies:
+MAIN DEPENDENCIES:
 - rvm with ruby 1.9.2-p290
 - rails 3.2.2
 - postgresql 9.1
@@ -19,7 +19,11 @@ main dependencies:
 - backbone 0.9.1
 - bootstrap 2.0.1
 
-check INSTALL for a fast setup in Oracle VirtualBox.
+INSTALLATION:
+- check INSTALL for a quick setup with VirtualBox and Debian.
+
+SCREENSHOT:
+- https://github.com/pinge/paleio/raw/master/public/screenshot.png
 
 TODO:
 - support multiple accounts
@@ -28,3 +32,4 @@ TODO:
 - channel history navigation and search
 - no websockets support fallback
 - heroku installation (with pusher addon)
+
