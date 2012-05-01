@@ -1,5 +1,3 @@
-paleio
-
 paleio is a collaboration chat. with file sharing. and invitations. and syntax highlight. and image preview.
 
 SUPPORTED BROWSERS:
@@ -29,6 +27,7 @@ TODO:
 - support multiple accounts
 - specs and consequent refactor
 - replace bluepill+open4
+- user and channel management (with permissions)
 - channel history navigation and search
 - no websockets support fallback
 - heroku installation (with pusher addon)
